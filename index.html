@@ -1,0 +1,3088 @@
+<div class="my-tool-bypass" id="stylish-tool">
+    <style>
+        /* ===== FORCE BUTTON CONTAINER VISIBILITY ===== */
+        #stylish-tool .hero-input-wrap {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            overflow: hidden !important;
+        }
+
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+            background: #0F172A;
+            color: #F8FAFC;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        ::selection {
+            background: #06B6D4;
+            color: #0F172A;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1E293B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #06B6D4;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8B5CF6;
+        }
+
+        /* ===== MY-TOOL-BYPASS WRAPPER ===== */
+        .my-tool-bypass {
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+            box-sizing: border-box !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            background: #0F172A;
+            color: #F8FAFC;
+        }
+        .my-tool-bypass * {
+            box-sizing: border-box;
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            padding: 0 8px !important;
+            box-sizing: border-box !important;
+        }
+        .section {
+            padding: 28px 0;
+        }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #F8FAFC;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+        }
+        .section-title .highlight {
+            background: linear-gradient(135deg, #06B6D4, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-sub {
+            color: #94A3B8;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        .text-muted {
+            color: #94A3B8;
+        }
+        .text-sm {
+            font-size: 0.8rem;
+        }
+        .hidden {
+            display: none !important;
+        }
+
+        /* ===== GLASS CARD ===== */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 14px;
+            padding: 14px 18px;
+            transition: border-color 0.3s, transform 0.25s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .glass-card:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 36px rgba(0, 0, 0, 0.35);
+        }
+
+        /* ===== HEADER / HERO ===== */
+        .hero {
+            padding: 24px 0 14px;
+            text-align: center;
+            position: relative;
+            overflow: visible !important;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -30%;
+            width: 160%;
+            height: 160%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(6, 182, 212, 0.05), transparent 70%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.12);
+            color: #06B6D4;
+            padding: 3px 14px;
+            border-radius: 40px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            border: 1px solid rgba(6, 182, 212, 0.15);
+        }
+        .hero h1 {
+            font-size: clamp(1.5rem, 4.5vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #F8FAFC 20%, #06B6D4 50%, #8B5CF6 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%,
+            100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.06);
+            }
+        }
+        .hero .subtitle {
+            font-size: clamp(0.85rem, 1vw, 1rem);
+            color: #94A3B8;
+            max-width: 640px;
+            margin: 0 auto 16px;
+            line-height: 1.6;
+        }
+
+        /* === Input + Button inline === */
+        .hero-input-wrap {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 60px;
+            border: 2px solid #334155;
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(8px);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            min-height: 54px;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: visible; /* ensures button is not clipped */
+        }
+        .hero-input-wrap:focus-within {
+            border-color: #06B6D4;
+            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.1);
+        }
+
+        .hero-input-wrap input {
+            display: block;
+            width: 100% !important;
+            padding: 14px 100px 14px 20px !important;
+            border: none !important;
+            border-radius: 60px !important;
+            background: transparent !important;
+            color: #F8FAFC !important;
+            font-size: 1rem !important;
+            outline: none !important;
+            font-family: inherit !important;
+            box-sizing: border-box !important;
+            height: auto !important;
+            line-height: 1.4 !important;
+        }
+        .hero-input-wrap input::placeholder {
+            color: #64748B !important;
+        }
+
+        .hero-input-wrap .btn-generate {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 8px 18px !important;
+            border-radius: 60px !important;
+            border: none !important;
+            background: linear-gradient(135deg, #06B6D4, #8B5CF6) !important;
+            color: #F8FAFC !important;
+            font-weight: 600 !important;
+            font-size: 0.8rem !important;
+            cursor: pointer !important;
+            transition: 0.3s !important;
+            white-space: nowrap !important;
+            font-family: inherit !important;
+            box-shadow: 0 4px 16px rgba(6, 182, 212, 0.2) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 10 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+            min-width: 80px !important;
+            width: auto !important;
+            min-height: 36px !important;
+            line-height: 1.4 !important;
+            -webkit-appearance: none !important;
+            appearance: none !important;
+            text-shadow: none !important;
+            letter-spacing: 0.02em !important;
+            margin: 0 !important;
+        }
+        .hero-input-wrap .btn-generate:hover {
+            transform: translateY(-50%) scale(1.04) !important;
+            box-shadow: 0 8px 28px rgba(6, 182, 212, 0.3) !important;
+        }
+        .hero-input-wrap .btn-generate:active {
+            transform: translateY(-50%) scale(0.95) !important;
+        }
+
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 16px 32px;
+            flex-wrap: wrap;
+            padding: 10px 0 4px;
+            border-top: 1px solid rgba(51, 65, 85, 0.4);
+            margin-top: 14px;
+        }
+        .stats-bar .stat-item {
+            text-align: center;
+        }
+        .stats-bar .stat-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #06B6D4;
+            display: block;
+        }
+        .stats-bar .stat-label {
+            font-size: 0.7rem;
+            color: #94A3B8;
+        }
+
+        /* ===== STICKY SEARCH ===== */
+        .sticky-search {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(15, 23, 42, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+            margin-bottom: 14px;
+        }
+        .sticky-search .search-inner {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .sticky-search .search-inner input {
+            flex: 1;
+            min-width: 100px;
+            padding: 7px 14px;
+            border-radius: 40px;
+            border: 1px solid #334155;
+            background: #1E293B;
+            color: #F8FAFC;
+            font-size: 0.8rem;
+            outline: none;
+            transition: 0.3s;
+            font-family: inherit;
+        }
+        .sticky-search .search-inner input:focus {
+            border-color: #06B6D4;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.08);
+        }
+        .sticky-search .search-inner input::placeholder {
+            color: #64748B;
+        }
+        .sticky-search .search-inner select {
+            padding: 7px 14px;
+            border-radius: 40px;
+            border: 1px solid #334155;
+            background: #1E293B;
+            color: #F8FAFC;
+            font-size: 0.75rem;
+            outline: none;
+            cursor: pointer;
+            font-family: inherit;
+            min-width: 90px;
+        }
+        .sticky-search .search-inner select:focus {
+            border-color: #06B6D4;
+        }
+        .sticky-search .search-inner select option {
+            background: #1E293B;
+        }
+        .sticky-search .search-inner .clear-btn {
+            padding: 7px 14px;
+            border-radius: 40px;
+            border: 1px solid #334155;
+            background: transparent;
+            color: #94A3B8;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: 0.3s;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+        .sticky-search .search-inner .clear-btn:hover {
+            border-color: #EF4444;
+            color: #EF4444;
+        }
+
+        /* ===== CATEGORY TABS ===== */
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+        .category-tabs .tab-btn {
+            padding: 4px 12px;
+            border-radius: 40px;
+            border: 1px solid #334155;
+            background: transparent;
+            color: #94A3B8;
+            font-size: 0.65rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.25s;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+        .category-tabs .tab-btn:hover {
+            border-color: #06B6D4;
+            color: #F8FAFC;
+        }
+        .category-tabs .tab-btn.active {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.12), rgba(139, 92, 246, 0.12));
+            border-color: #06B6D4;
+            color: #06B6D4;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.04);
+        }
+
+        /* ===== RESULTS GRID ===== */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 10px;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .result-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(51, 65, 85, 0.4);
+            border-radius: 12px;
+            padding: 10px 14px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.25s ease;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            min-width: 0;
+            word-break: break-word;
+            overflow: hidden;
+        }
+        .result-card:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+        }
+        .result-card .preview {
+            font-size: 1rem;
+            padding: 4px 0 8px;
+            word-break: break-word;
+            color: #F8FAFC;
+            font-weight: 500;
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+            line-height: 1.4;
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
+        .result-card .badge-wrap {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-bottom: 3px;
+        }
+        .result-card .badge-wrap .badge {
+            font-size: 0.5rem;
+            padding: 1px 7px;
+            border-radius: 20px;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: #06B6D4;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .result-card .badge-wrap .badge.trending {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #F87171;
+        }
+        .result-card .badge-wrap .badge.popular {
+            background: rgba(251, 191, 36, 0.15);
+            border-color: rgba(251, 191, 36, 0.3);
+            color: #FBBF24;
+        }
+        .result-card .badge-wrap .badge.premium {
+            background: rgba(139, 92, 246, 0.15);
+            border-color: rgba(139, 92, 246, 0.3);
+            color: #A78BFA;
+        }
+        .result-card .badge-wrap .badge.gaming {
+            background: rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.3);
+            color: #4ADE80;
+        }
+        .result-card .badge-wrap .badge.aesthetic {
+            background: rgba(236, 72, 153, 0.15);
+            border-color: rgba(236, 72, 153, 0.3);
+            color: #F472B6;
+        }
+
+        .result-card .card-actions {
+            display: flex;
+            gap: 4px;
+            margin-top: 4px;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(51, 65, 85, 0.3);
+            padding-top: 6px;
+            align-items: center;
+        }
+        .result-card .card-actions .style-tag {
+            font-size: 0.45rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #64748B;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 2px 7px;
+            border-radius: 20px;
+            margin-right: auto;
+            border: 1px solid #334155;
+            max-width: 70px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .result-card .card-actions button {
+            background: rgba(255, 255, 255, 0.04);
+            border: none;
+            border-radius: 6px;
+            color: #94A3B8;
+            padding: 3px 8px;
+            font-size: 0.65rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-family: inherit;
+            font-weight: 500;
+        }
+        .result-card .card-actions button:hover {
+            background: rgba(6, 182, 212, 0.08);
+            color: #06B6D4;
+        }
+        .result-card .card-actions .copy-btn {
+            background: linear-gradient(135deg, #8B5CF6, #06B6D4);
+            color: #F8FAFC;
+            font-weight: 600;
+            padding: 3px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(139, 92, 246, 0.15);
+            transition: 0.25s;
+        }
+        .result-card .card-actions .copy-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 4px 18px rgba(139, 92, 246, 0.25);
+            background: linear-gradient(135deg, #7C3AED, #06B6D4);
+            color: #F8FAFC;
+        }
+        .result-card .card-actions .copy-btn.copied {
+            background: #22C55E;
+            box-shadow: 0 2px 10px rgba(34, 197, 94, 0.25);
+        }
+        .result-card .card-actions .fav-btn.active {
+            color: #F59E0B;
+        }
+        .result-card .card-actions .fav-btn.active:hover {
+            color: #EF4444;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== PAGINATION ===== */
+        .pagination-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            padding: 6px 0;
+        }
+        .pagination-wrap .page-btn {
+            min-width: 30px;
+            height: 30px;
+            padding: 0 8px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: transparent;
+            color: #94A3B8;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.25s;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pagination-wrap .page-btn:hover {
+            border-color: #06B6D4;
+            color: #F8FAFC;
+            background: rgba(6, 182, 212, 0.06);
+        }
+        .pagination-wrap .page-btn.active {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15));
+            border-color: #06B6D4;
+            color: #06B6D4;
+        }
+        .pagination-wrap .page-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .pagination-wrap .page-info {
+            color: #64748B;
+            font-size: 0.75rem;
+            padding: 0 4px;
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            padding: 8px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: #22C55E;
+            font-weight: 600;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 9999;
+            pointer-events: none;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ===== INVISIBLE SECTION ===== */
+        .invisible-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid rgba(51, 65, 85, 0.4);
+        }
+        .invisible-box .char-display {
+            font-size: 1.6rem;
+            padding: 4px 14px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            min-width: 50px;
+            text-align: center;
+            color: #06B6D4;
+            font-family: monospace;
+            letter-spacing: 4px;
+            border: 1px dashed #334155;
+        }
+        .invisible-box .char-info {
+            flex: 1;
+            color: #94A3B8;
+            font-size: 0.75rem;
+        }
+        .invisible-box .char-info strong {
+            color: #F8FAFC;
+        }
+        .invisible-box .char-info .copy-inv-btn {
+            padding: 5px 18px;
+            border-radius: 40px;
+            border: none;
+            background: linear-gradient(135deg, #06B6D4, #8B5CF6);
+            color: #F8FAFC;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.3s;
+            margin-top: 4px;
+            font-size: 0.75rem;
+        }
+        .invisible-box .char-info .copy-inv-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 18px rgba(6, 182, 212, 0.2);
+        }
+
+        /* ===== SYMBOLS ===== */
+        .symbols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+            gap: 6px;
+            contain: layout style paint;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .symbols-grid .sym-item {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(4px);
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 6px 0;
+            text-align: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.25s;
+            user-select: none;
+            will-change: transform;
+            contain: layout style paint;
+            min-width: 0;
+            overflow: hidden;
+        }
+        .symbols-grid .sym-item:hover {
+            border-color: #06B6D4;
+            transform: scale(1.06);
+            background: rgba(6, 182, 212, 0.06);
+        }
+        .symbols-grid .sym-item.copied {
+            border-color: #22C55E;
+            background: rgba(34, 197, 94, 0.06);
+        }
+        .symbols-load-more {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .symbols-load-more button {
+            padding: 6px 20px;
+            border-radius: 40px;
+            border: 1px solid #334155;
+            background: transparent;
+            color: #94A3B8;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.3s;
+            font-size: 0.8rem;
+        }
+        .symbols-load-more button:hover {
+            border-color: #06B6D4;
+            color: #F8FAFC;
+            background: rgba(6, 182, 212, 0.06);
+        }
+
+        /* ===== FAVORITES / HISTORY ===== */
+        .mini-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            align-items: center;
+            padding: 4px 0;
+        }
+        .mini-list .mini-item {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(4px);
+            border: 1px solid #334155;
+            border-radius: 30px;
+            padding: 3px 10px;
+            font-size: 0.7rem;
+            color: #F8FAFC;
+            cursor: pointer;
+            transition: 0.2s;
+            white-space: nowrap;
+            max-width: 160px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .mini-list .mini-item:hover {
+            border-color: #06B6D4;
+            background: rgba(6, 182, 212, 0.06);
+        }
+        .mini-list .mini-item .remove-fav {
+            color: #EF4444;
+            font-size: 0.55rem;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: 0.2s;
+        }
+        .mini-list .mini-item .remove-fav:hover {
+            opacity: 1;
+        }
+
+        /* ===== DECORATIONS ===== */
+        .deco-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 8px;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .deco-grid .deco-item {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(4px);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 8px 12px;
+            text-align: center;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.25s;
+            color: #F8FAFC;
+            font-weight: 500;
+            word-break: break-word;
+            overflow: hidden;
+            min-width: 0;
+        }
+        .deco-grid .deco-item:hover {
+            border-color: #8B5CF6;
+            transform: translateY(-2px);
+            background: rgba(139, 92, 246, 0.06);
+        }
+        .deco-grid .deco-item .deco-label {
+            font-size: 0.45rem;
+            color: #64748B;
+            display: block;
+            margin-top: 2px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        @media (max-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .faq-item {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(4px);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+        .faq-item:hover {
+            border-color: rgba(6, 182, 212, 0.2);
+        }
+        .faq-item .faq-q {
+            font-weight: 600;
+            color: #F8FAFC;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
+        .faq-item .faq-q .faq-icon {
+            color: #06B6D4;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            flex-shrink: 0;
+        }
+        .faq-item .faq-a {
+            color: #94A3B8;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin-top: 8px;
+            display: none;
+        }
+        .faq-item.open .faq-a {
+            display: block;
+        }
+        .faq-item.open .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* ===== SEO CONTENT ===== */
+        .seo-content {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(4px);
+            border: 1px solid #334155;
+            border-radius: 14px;
+            padding: 20px 18px;
+            overflow: hidden;
+            word-break: break-word;
+        }
+        .seo-content h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #F8FAFC;
+            margin: 20px 0 8px;
+        }
+        .seo-content h2:first-of-type {
+            margin-top: 0;
+        }
+        .seo-content h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #E5E7EB;
+            margin: 14px 0 6px;
+        }
+        .seo-content p {
+            color: #94A3B8;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        .seo-content ul {
+            color: #94A3B8;
+            line-height: 1.7;
+            padding-left: 18px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        .seo-content ul li {
+            margin-bottom: 3px;
+        }
+        .seo-content strong {
+            color: #F8FAFC;
+        }
+
+        /* ===== TRENDING / POPULAR SECTIONS ===== */
+        .featured-section {
+            margin-bottom: 24px;
+        }
+        .featured-section .featured-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .featured-section .featured-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #F8FAFC;
+        }
+        .featured-section .featured-header .featured-icon {
+            font-size: 1.2rem;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 8px;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .featured-grid .result-card {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(6, 182, 212, 0.15);
+            min-width: 0;
+            overflow: hidden;
+        }
+        .featured-grid .result-card:hover {
+            border-color: #06B6D4;
+        }
+
+        /* ===== SECTION-EMPTY ===== */
+        .section-empty {
+            display: none !important;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid rgba(51, 65, 85, 0.4);
+            padding: 18px 0 10px;
+            text-align: center;
+            color: #64748B;
+            font-size: 0.7rem;
+        }
+        .footer a {
+            color: #94A3B8;
+            transition: 0.2s;
+        }
+        .footer a:hover {
+            color: #06B6D4;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            .section {
+                padding: 20px 0;
+            }
+            .hero {
+                padding: 16px 0 10px;
+            }
+            .hero-input-wrap {
+                border-radius: 50px !important;
+                min-height: 48px !important;
+            }
+            .hero-input-wrap input {
+                padding: 12px 80px 12px 16px !important;
+                font-size: 0.9rem !important;
+                border-radius: 50px !important;
+            }
+            .hero-input-wrap .btn-generate {
+                padding: 6px 12px !important;
+                font-size: 0.7rem !important;
+                min-width: fit-content !important;
+                right: 4px !important;
+                min-height: 32px !important;
+                transform: translateY(-50%) !important;
+            }
+            .hero-input-wrap .btn-generate:hover {
+                transform: translateY(-50%) scale(1.04) !important;
+            }
+            .hero-input-wrap .btn-generate:active {
+                transform: translateY(-50%) scale(0.95) !important;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr !important;
+                gap: 8px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow: hidden !important;
+            }
+            .featured-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 6px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow: hidden !important;
+            }
+            .stats-bar {
+                gap: 8px 14px;
+            }
+            .stats-bar .stat-number {
+                font-size: 1rem;
+            }
+            .category-tabs .tab-btn {
+                font-size: 0.55rem;
+                padding: 3px 10px;
+            }
+            .section-title {
+                font-size: 1.1rem;
+            }
+            .invisible-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            .symbols-grid {
+                grid-template-columns: repeat(auto-fill, minmax(34px, 1fr));
+            }
+            .deco-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            .sticky-search .search-inner {
+                flex-direction: column;
+            }
+            .sticky-search .search-inner input {
+                width: 100%;
+                min-width: unset;
+            }
+            .sticky-search .search-inner select {
+                width: 100%;
+                min-width: unset;
+            }
+            .sticky-search .search-inner .clear-btn {
+                width: 100%;
+                text-align: center;
+            }
+            .seo-content {
+                padding: 14px 10px;
+            }
+            .seo-content h2 {
+                font-size: 1rem;
+            }
+            .result-card .card-actions .style-tag {
+                max-width: 50px;
+                font-size: 0.4rem;
+            }
+            .pagination-wrap .page-btn {
+                min-width: 26px;
+                height: 26px;
+                font-size: 0.65rem;
+                padding: 0 6px;
+            }
+            .result-card .preview {
+                font-size: 0.9rem;
+                min-height: 28px;
+            }
+            .featured-grid .result-card .preview {
+                font-size: 0.8rem;
+            }
+            .container {
+                padding: 0 6px !important;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .results-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            .featured-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+        }
+
+        /* ===== SCROLL CONTAINER ===== */
+        .tabs-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 4px;
+            padding-bottom: 4px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            flex-wrap: nowrap;
+        }
+        .tabs-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .tabs-scroll .tab-btn {
+            flex-shrink: 0;
+        }
+
+        /* ===== EMPTY STATE ===== */
+        .empty-state {
+            text-align: center;
+            padding: 30px 12px;
+            color: #64748B;
+            grid-column: 1 / -1;
+        }
+        .empty-state .empty-icon {
+            font-size: 2rem;
+            margin-bottom: 6px;
+        }
+        .empty-state h3 {
+            color: #F8FAFC;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .empty-state p {
+            font-size: 0.8rem;
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 2px solid #06B6D4;
+            outline-offset: 2px;
+        }
+        .result-card .card-actions button:focus-visible {
+            outline: 2px solid #06B6D4;
+            outline-offset: 1px;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ====================================================
+           ULTRA-STRONG OVERRIDES FOR BLOGGER THEME
+           ==================================================== */
+        #stylish-tool .hero-input-wrap {
+            position: relative !important;
+            overflow: visible !important;
+            min-height: 54px !important;
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            width: 100% !important;
+        }
+        #stylish-tool .hero-input-wrap input {
+            display: block !important;
+            width: 100% !important;
+            padding-right: 100px !important;
+            border: none !important;
+            background: transparent !important;
+            box-sizing: border-box !important;
+        }
+        #stylish-tool .hero-input-wrap .btn-generate {
+            position: absolute !important;
+            right: 6px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            display: inline-flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            z-index: 999 !important;
+            pointer-events: auto !important;
+            margin: 0 !important;
+            border: none !important;
+            background: linear-gradient(135deg, #06B6D4, #8B5CF6) !important;
+            color: #F8FAFC !important;
+            border-radius: 60px !important;
+            font-weight: 600 !important;
+            font-size: 0.8rem !important;
+            cursor: pointer !important;
+            box-shadow: 0 4px 16px rgba(6, 182, 212, 0.2) !important;
+            transition: 0.3s !important;
+            white-space: nowrap !important;
+            font-family: inherit !important;
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            text-shadow: none !important;
+            letter-spacing: 0.02em !important;
+            line-height: 1.4 !important;
+            min-height: 36px !important;
+            padding: 8px 18px !important;
+            min-width: 80px !important;
+            width: auto !important;
+            flex: 0 0 auto !important;
+        }
+        #stylish-tool .hero-input-wrap .btn-generate:hover {
+            transform: translateY(-50%) scale(1.04) !important;
+            box-shadow: 0 8px 28px rgba(6, 182, 212, 0.3) !important;
+        }
+        #stylish-tool .hero-input-wrap .btn-generate:active {
+            transform: translateY(-50%) scale(0.95) !important;
+        }
+
+        @media (max-width: 640px) {
+            #stylish-tool .hero-input-wrap .btn-generate {
+                padding: 6px 12px !important;
+                font-size: 0.7rem !important;
+                min-width: fit-content !important;
+                right: 4px !important;
+                min-height: 32px !important;
+            }
+            #stylish-tool .hero-input-wrap input {
+                padding-right: 80px !important;
+            }
+        }
+    </style>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast" role="status" aria-live="polite">✅ Copied Successfully</div>
+
+    <!-- ===== HEADER / HERO ===== -->
+    <header class="hero" role="banner">
+        <div class="container">
+            <div class="hero-badge" id="heroBadge">✦ 500 Styles</div>
+            <h1>Stylish Text Generator Pro – <span id="seoStyleCount">500</span>+ Fancy Fonts &amp; Stylish Names</h1>
+            <p class="subtitle">Convert normal text into stylish fonts instantly for Instagram, Free Fire, BGMI, WhatsApp, Discord, TikTok, Facebook and more.</p>
+            <div class="hero-input-wrap">
+                <input type="text" id="mainInput" placeholder="Type your text here..." autofocus aria-label="Enter text to generate styles" />
+                <div id="mainGenerateBtn" role="button" tabindex="0" style="display: flex !important; align-items: center !important; justify-content: center !important; background: linear-gradient(135deg, #06B6D4, #8B5CF6) !important; color: white !important; padding: 12px 24px !important; border-radius: 50px !important; cursor: pointer !important; font-weight: bold !important; min-width: 100px !important; z-index: 9999 !important;">✨ Generate</div>
+            </div>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number" id="styleCount">0</span>
+                    <span class="stat-label">Unique Styles</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Symbols</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="favoriteCount">0</span>
+                    <span class="stat-label">Favorites</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="container" role="main">
+
+        <!-- ===== STICKY SEARCH ===== -->
+        <div class="sticky-search" id="stickySearch" role="search">
+            <div class="search-inner">
+                <input type="text" id="searchInput" placeholder="🔍 Search styles… (e.g. Gothic, Bold)" aria-label="Search styles" />
+                <select id="categoryFilter" aria-label="Filter by category">
+                    <option value="all">All Categories</option>
+                </select>
+                <button class="clear-btn" id="clearSearchBtn" aria-label="Clear search">✕ Clear</button>
+            </div>
+        </div>
+
+        <!-- ===== CATEGORY TABS ===== -->
+        <nav class="category-tabs tabs-scroll" id="categoryTabs" aria-label="Style categories">
+            <!-- Dynamically populated -->
+        </nav>
+
+        <!-- ===== TRENDING SECTION ===== -->
+        <div id="trendingContainer" class="featured-section section-empty">
+            <div class="featured-header">
+                <span class="featured-icon">🔥</span>
+                <h3>Trending Fonts</h3>
+            </div>
+            <div class="featured-grid" id="trendingGrid" role="list"></div>
+        </div>
+
+        <!-- ===== POPULAR SECTION ===== -->
+        <div id="popularContainer" class="featured-section section-empty">
+            <div class="featured-header">
+                <span class="featured-icon">⭐</span>
+                <h3>Most Popular Fonts</h3>
+            </div>
+            <div class="featured-grid" id="popularGrid" role="list"></div>
+        </div>
+
+        <!-- ===== RESULTS ===== -->
+        <div id="resultsContainer">
+            <div class="results-grid" id="resultsGrid" role="list">
+                <div class="empty-state" role="status">
+                    <div class="empty-icon">✍️</div>
+                    <h3>Start Typing to Generate Styles</h3>
+                    <p>Enter any text above and see 500+ stylish variations appear instantly.</p>
+                </div>
+            </div>
+            <div class="pagination-wrap" id="paginationWrap" role="navigation" aria-label="Pagination"></div>
+        </div>
+
+        <!-- ===== GAMING SECTION ===== -->
+        <section class="section section-empty" id="gamingSection" aria-label="Gaming name generator">
+            <h2 class="section-title">🎮 <span class="highlight">Gaming Name Generator</span></h2>
+            <p class="section-sub">BGMI, Free Fire, PUBG, Clan tags, Pro gamer names &amp; more.</p>
+            <div class="results-grid" id="gamingGrid" role="list"></div>
+        </section>
+
+        <!-- ===== SOCIAL MEDIA SECTION ===== -->
+        <section class="section section-empty" id="socialSection" aria-label="Social media fonts">
+            <h2 class="section-title">📱 <span class="highlight">Social Media Fonts</span></h2>
+            <p class="section-sub">Instagram bio fonts, Discord, WhatsApp, TikTok, Facebook, Twitter/X &amp; more.</p>
+            <div class="results-grid" id="socialGrid" role="list"></div>
+        </section>
+
+        <!-- ===== INVISIBLE CHARACTER ===== -->
+        <section class="section" id="invisibleSection" aria-label="Invisible character generator">
+            <h2 class="section-title">👻 <span class="highlight">Invisible Character Generator</span></h2>
+            <p class="section-sub">Copy an invisible character (Zero-Width Space) for BGMI, Free Fire, Instagram, Discord &amp; more.</p>
+            <div class="invisible-box">
+                <div class="char-display" id="invisibleDisplay" aria-hidden="true">​</div>
+                <div class="char-info">
+                    <strong>Invisible Character (U+200B)</strong><br />
+                    Zero-width space — paste it anywhere to make your name or bio look empty.
+                    <br /><br />
+                    <button class="copy-inv-btn" id="copyInvisibleBtn" aria-label="Copy invisible character">📋 Copy Invisible Character</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FANCY SYMBOLS ===== -->
+        <section class="section" id="symbolsSection" aria-label="Fancy symbols collection">
+            <h2 class="section-title">✨ <span class="highlight">Fancy Symbols Collection</span></h2>
+            <p class="section-sub">Curated symbols — hearts, crowns, stars, gaming, aesthetic, music &amp; more.</p>
+            <div class="category-tabs tabs-scroll" id="symbolTabs" role="tablist">
+                <!-- Dynamically populated -->
+            </div>
+            <div class="symbols-grid" id="symbolsGrid" role="list"></div>
+            <div class="symbols-load-more" id="symbolsLoadMoreWrap">
+                <button id="symbolsLoadMoreBtn" aria-label="Load more symbols">Load More</button>
+            </div>
+        </section>
+
+        <!-- ===== DECORATION GENERATOR ===== -->
+        <section class="section section-empty" id="decoSection" aria-label="Name decoration generator">
+            <h2 class="section-title">🎨 <span class="highlight">Name Decoration Generator</span></h2>
+            <p class="section-sub">Wrap your name in stylish decorations — perfect for gaming &amp; social profiles.</p>
+            <div class="deco-grid" id="decoGrid" role="list"></div>
+        </section>
+
+        <!-- ===== FAVORITES ===== -->
+        <section class="section section-empty" id="favoritesSection" aria-label="Your favorite styles">
+            <h2 class="section-title">⭐ <span class="highlight">Your Favorites</span></h2>
+            <p class="section-sub">Saved styles — stored locally in your browser.</p>
+            <div class="mini-list" id="favoritesList" role="list"></div>
+        </section>
+
+        <!-- ===== RECENT HISTORY ===== -->
+        <section class="section section-empty" id="historySection" aria-label="Recent history">
+            <h2 class="section-title">🕒 <span class="highlight">Recent History</span></h2>
+            <p class="section-sub">Your recently generated and copied styles.</p>
+            <div class="mini-list" id="historyList" role="list"></div>
+        </section>
+
+        <!-- ===== SEO CONTENT ===== -->
+        <section class="section" id="seoContent" aria-label="SEO content">
+            <div class="seo-content">
+                <h2>What Is Stylish Text Generator?</h2>
+                <p>A <strong>Stylish Text Generator</strong> is an online tool that transforms ordinary text into eye-catching <strong>fancy fonts</strong> using Unicode character mapping. Instead of requiring font installations, this generator replaces each letter with visually similar characters from other Unicode blocks — creating everything from <strong>bold</strong> and <strong>italic</strong> to <strong>cursive</strong>, <strong>gothic</strong>, <strong>bubble</strong>, <strong>decorative</strong>, and <strong>aesthetic</strong> styles.</p>
+                <p>Our <strong>Stylish Text Generator Pro</strong> takes this concept further with over <strong id="seoStyleCount2">500+</strong> unique font variations, making it one of the most comprehensive and user-friendly <strong>fancy text generators</strong> available online. Whether you're a gamer searching for the perfect <strong>BGMI name</strong> or <strong>Free Fire nickname</strong>, a content creator crafting an <strong>Instagram bio</strong>, or someone who simply loves <strong>cool fonts</strong> — this tool has everything you need.</p>
+
+                <h2>How To Use Stylish Text Generator?</h2>
+                <p>Using our <strong>stylish font generator</strong> is incredibly simple:</p>
+                <ul>
+                    <li><strong>Step 1:</strong> Type or paste your text into the input box above. The field is completely empty by default — just start typing.</li>
+                    <li><strong>Step 2:</strong> Watch as <strong id="seoStyleCount3">500+</strong> stylish fonts appear instantly in the results grid below. No button clicks needed — it's live!</li>
+                    <li><strong>Step 3:</strong> Browse through user-friendly categories like <strong>🔥 Trending</strong>, <strong>⭐ Popular</strong>, <strong>👑 VIP / Royal</strong>, <strong>🎮 Gaming</strong>, <strong>😎 Attitude</strong>, <strong>📸 Instagram</strong>, and more.</li>
+                    <li><strong>Step 4:</strong> Click the <strong>Copy</strong> button on any style card to copy it to your clipboard. Paste it anywhere — Instagram, BGMI, Free Fire, WhatsApp, Discord, TikTok, or any other platform.</li>
+                    <li><strong>Step 5:</strong> Use the <strong>Search</strong> bar to find specific styles or filter by category using the dropdown menu.</li>
+                </ul>
+                <p>You can also <strong>save your favorite styles</strong> by clicking the ★ button, and your <strong>recently copied</strong> text is automatically saved for quick access. Everything runs in your browser — no registration, no data sent to servers.</p>
+
+                <h2>Best Uses Of Fancy Fonts</h2>
+                <p><strong>Fancy fonts</strong> and <strong>stylish text</strong> have countless applications across social media, gaming, branding, and creative projects:</p>
+                <ul>
+                    <li><strong>Social Media Profiles:</strong> Make your <strong>Instagram bio</strong>, <strong>Discord username</strong>, or <strong>Twitter/X display name</strong> stand out with unique <strong>Instagram font generator</strong> styles.</li>
+                    <li><strong>Gaming Names:</strong> Create pro-level <strong>BGMI name styles</strong>, <strong>Free Fire stylish names</strong>, <strong>PUBG names</strong>, and <strong>clan tags</strong> that grab attention in the lobby.</li>
+                    <li><strong>Content Creation:</strong> Use <strong>cool fonts</strong> for YouTube thumbnails, video titles, stream overlays, and channel branding.</li>
+                    <li><strong>Personal Branding:</strong> A <strong>stylish name maker</strong> helps you build a memorable online identity across platforms.</li>
+                    <li><strong>Creative Writing:</strong> Add flair to poems, quotes, captions, and messages with <strong>decorative text</strong> and <strong>aesthetic fonts</strong>.</li>
+                    <li><strong>Event &amp; Party Names:</strong> Create eye-catching <strong>fancy nickname</strong> styles for events, tournaments, and group chats.</li>
+                </ul>
+
+                <h2>Stylish Fonts For Instagram</h2>
+                <p>Instagram is one of the most popular platforms for <strong>stylish text</strong>. Our <strong>Instagram font generator</strong> offers a wide range of styles perfect for your bio, captions, comments, and even your username. From <strong>cursive fonts</strong> that look elegant to <strong>bubble fonts</strong> that feel playful — you'll find the perfect match for your aesthetic. Use our <strong>Instagram bio fonts</strong> to craft a profile that stands out and attracts followers.</p>
+
+                <h2>Stylish Names For BGMI &amp; Free Fire</h2>
+                <p>Gamers know that a <strong>stylish name</strong> is the first step to building a reputation in the battlegrounds. Our <strong>BGMI name generator</strong> and <strong>Free Fire name generator</strong> are specifically designed to help you create the perfect gaming identity. From <strong>royal name styles</strong> like ꧁༒Vijay༒꧂ to <strong>gamer tags</strong> like ★彡Shadow彡★, and <strong>hacker styles</strong> like 𝕍𝕚𝕛𝕒𝕪 — we've got every variation you can imagine. Use the <strong>invisible character</strong> tool to add a zero-width space to your name, making it appear empty or creating a unique visual effect.</p>
+
+                <h3>Best Stylish Names For BGMI</h3>
+                <p>BGMI (Battlegrounds Mobile India) allows Unicode characters, so you can use our generator to create names that are both unique and intimidating. Popular choices include:</p>
+                <ul>
+                    <li><strong>Royal Names:</strong> ꧁༒King༒꧂, ♛Queen♛, ⚜️Legend⚜️</li>
+                    <li><strong>Gamer Tags:</strong> ★彡ProGamer彡★, 🎯Sniper🎯, 🏆Winner🏆</li>
+                    <li><strong>Hacker Styles:</strong> 𝕂𝕚𝕝𝕝𝕖𝕣, 𝔇𝔢𝔞𝔱𝔥, 𝕊𝕙𝕒𝕕𝕠𝕨</li>
+                </ul>
+
+                <h3>Best Stylish Names For Free Fire</h3>
+                <p>Free Fire also supports stylish Unicode names. Our <strong>Free Fire name generator</strong> gives you access to:</p>
+                <ul>
+                    <li><strong>Fire &amp; Explosion:</strong> 🔥Blaze🔥, 💥Boom💥, ⚡Storm⚡</li>
+                    <li><strong>Aesthetic &amp; Cute:</strong> 🌸Sakura🌸, 💖Love💖, 🌙Moon🌙</li>
+                    <li><strong>VIP &amp; Royal:</strong> 👑King👑, 💎Diamond💎, 🏆Champion🏆</li>
+                </ul>
+
+                <h2>Best Discord Fonts &amp; TikTok Fonts</h2>
+                <p>Discord and TikTok are two of the most active platforms for <strong>stylish text</strong>. Our <strong>Discord font generator</strong> and <strong>TikTok font generator</strong> provide styles that are optimized for these platforms. For Discord, use <strong>monospace</strong> or <strong>script</strong> fonts to make your server nickname or message stand out. For TikTok, <strong>bubble</strong> and <strong>aesthetic</strong> fonts work best for bios and video captions.</p>
+
+                <h2>VIP &amp; Royal Stylish Names</h2>
+                <p>If you want to project authority and elegance, our <strong>VIP stylish name</strong> and <strong>royal stylish name</strong> categories are for you. These include styles with crowns, royal symbols, and ornate decorations. Examples: ꧁༒VIP༒꧂, ♛Royal♛, ⚜️Noble⚜️. Perfect for gaming leaders, streamers, and influencers.</p>
+
+                <h2>Aesthetic Fonts &amp; Cute Styles</h2>
+                <p>For a softer, more artistic look, our <strong>aesthetic fonts</strong> and <strong>cute styles</strong> are ideal. These include:</p>
+                <ul>
+                    <li><strong>Floral:</strong> 🌸🌸, ✿✿, 🌺🌺</li>
+                    <li><strong>Sparkle:</strong> ✧✧, ✦✦, ✨✨</li>
+                    <li><strong>Dainty:</strong> ⋆｡°✩, ✩°｡⋆, ⊰⊱</li>
+                </ul>
+                <p>Use these for Instagram bios, Pinterest captions, or any creative project.</p>
+
+                <h2>Why Choose Our Stylish Text Generator?</h2>
+                <ul>
+                    <li><strong>100% Free:</strong> No registration, no hidden charges, unlimited usage.</li>
+                    <li><strong>No Installation:</strong> Works directly in your browser, on any device.</li>
+                    <li><strong>Mobile-Friendly:</strong> Optimized for smartphones and tablets.</li>
+                    <li><strong>Fast &amp; Reliable:</strong> Generates styles instantly with smooth performance.</li>
+                    <li><strong>Privacy First:</strong> All data is stored locally; nothing is sent to servers.</li>
+                </ul>
+
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid" id="faqGrid"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p><strong>Stylish Text Generator Pro</strong> — <span id="footerStyleCount">0</span> Unique Styles • 100% Free • No Login</p>
+            <p style="margin-top:4px;">
+                <a href="#gamingSection">Gaming Names</a> •
+                <a href="#socialSection">Social Media Fonts</a> •
+                <a href="#symbolsSection">Symbols</a> •
+                <a href="#seoContent">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== FAQ SCHEMA MARKUP ===== -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                { "@type": "Question", "name": "What is a Stylish Text Generator?", "acceptedAnswer": { "@type": "Answer", "text": "A Stylish Text Generator converts your plain text into fancy Unicode characters, creating unique fonts for social media, gaming, and more." } },
+                { "@type": "Question", "name": "How do I create stylish text?", "acceptedAnswer": { "@type": "Answer", "text": "Simply type your text into the input box and our tool instantly generates 500+ stylish font variations using Unicode character transformations." } },
+                { "@type": "Question", "name": "Can I use fancy text on Instagram?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Instagram fully supports Unicode characters. You can use our stylish fonts in your bio, captions, comments, and username." } },
+                { "@type": "Question", "name": "Can I use stylish names in BGMI?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, BGMI supports many Unicode characters. Use our BGMI name generator to create cool, unique names with special symbols." } },
+                { "@type": "Question", "name": "Can I use stylish text in Free Fire?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Free Fire supports stylish Unicode names. Generate your Free Fire nickname here and paste it directly into the game." } },
+                { "@type": "Question", "name": "Is this tool free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, this Stylish Text Generator is 100% free to use. No registration, no payment, no hidden charges." } },
+                { "@type": "Question", "name": "How to copy fancy fonts?", "acceptedAnswer": { "@type": "Answer", "text": "Click the Copy button on any style card. The text is copied to your clipboard and ready to paste anywhere." } },
+                { "@type": "Question", "name": "Which fonts work in Discord?", "acceptedAnswer": { "@type": "Answer", "text": "Discord supports Unicode, so all our styles work perfectly in Discord nicknames and messages." } },
+                { "@type": "Question", "name": "Do stylish fonts affect SEO?", "acceptedAnswer": { "@type": "Answer", "text": "They can enhance user engagement, indirectly benefiting SEO. They use standard Unicode which is readable by search engines." } },
+                { "@type": "Question", "name": "What is Unicode text?", "acceptedAnswer": { "@type": "Answer", "text": "Unicode is a standard for character encoding that enables fancy fonts across all platforms and devices." } },
+                { "@type": "Question", "name": "Can I use these fonts on WhatsApp?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, WhatsApp supports Unicode characters for status, bio, and messages." } },
+                { "@type": "Question", "name": "Can I use stylish text on TikTok?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, TikTok supports Unicode. Use our TikTok font generator for stylish bios and captions." } },
+                { "@type": "Question", "name": "How many styles does this tool have?", "acceptedAnswer": { "@type": "Answer", "text": "This tool generates 500+ unique styles, with an expandable architecture for even more." } },
+                { "@type": "Question", "name": "Can I save my favorite styles?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, click the ★ button on any style to save it to your favorites in local storage." } },
+                { "@type": "Question", "name": "What is an invisible character?", "acceptedAnswer": { "@type": "Answer", "text": "An invisible character (zero-width space, U+200B) is a Unicode character that takes up no visible space." } },
+                { "@type": "Question", "name": "Do these fonts work on Android and iPhone?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, both Android and iOS fully support Unicode characters." } },
+                { "@type": "Question", "name": "What are gaming symbols?", "acceptedAnswer": { "@type": "Answer", "text": "Gaming symbols include emojis and Unicode characters like 🎮, 🕹, ⚔, 🏆, and many more." } },
+                { "@type": "Question", "name": "Can I use stylish text for my YouTube channel?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, YouTube supports Unicode characters in channel names, video titles, and descriptions." } },
+                { "@type": "Question", "name": "What is the decoration generator?", "acceptedAnswer": { "@type": "Answer", "text": "The decoration generator wraps your name in stylish ornaments like borders, crowns, and stars." } },
+                { "@type": "Question", "name": "Is there a limit to how many styles I can generate?", "acceptedAnswer": { "@type": "Answer", "text": "No, you can generate unlimited styles instantly." } },
+                { "@type": "Question", "name": "Can I copy multiple styles at once?", "acceptedAnswer": { "@type": "Answer", "text": "Each style has its own copy button. Copy one style at a time for the best experience." } },
+                { "@type": "Question", "name": "Is my data safe?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, your data is completely safe. Favorites and history are stored locally in your browser." } }
+            ]
+        }
+    </script>
+
+    <!-- ===== SOFTWARE APPLICATION SCHEMA ===== -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Stylish Text Generator Pro",
+            "description": "Generate 500+ fancy fonts, stylish names, gaming names, Instagram bio fonts & cool text online. Free, no registration.",
+            "applicationCategory": "WebApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Modern browser with JavaScript",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "author": {
+                "@type": "Person",
+                "name": "Stylish Text Generator Pro"
+            },
+            "url": "https://www.easyresizerimage.in/p/stylish-text-generator.html"
+        }
+    </script>
+
+    <!-- ===== BREADCRUMB SCHEMA ===== -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://www.easyresizerimage.in/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Stylish Text Generator Pro",
+                    "item": "https://www.easyresizerimage.in/p/stylish-text-generator.html"
+                }
+            ]
+        }
+    </script>
+
+    <script>
+        //<![CDATA[
+        // =====================================================================
+        //  UNICODE MAPS (COMPLETE - 500+ STYLES)
+        // =====================================================================
+        const UC = {
+            bold: { A: '𝐀', B: '𝐁', C: '𝐂', D: '𝐃', E: '𝐄', F: '𝐅', G: '𝐆', H: '𝐇', I: '𝐈', J: '𝐉', K: '𝐊', L: '𝐋',
+                M: '𝐌', N: '𝐍', O: '𝐎', P: '𝐏', Q: '𝐐', R: '𝐑', S: '𝐒', T: '𝐓', U: '𝐔', V: '𝐕', W: '𝐖', X: '𝐗', Y: '𝐘',
+                Z: '𝐙', a: '𝐚', b: '𝐛', c: '𝐜', d: '𝐝', e: '𝐞', f: '𝐟', g: '𝐠', h: '𝐡', i: '𝐢', j: '𝐣', k: '𝐤', l: '𝐥',
+                m: '𝐦', n: '𝐧', o: '𝐨', p: '𝐩', q: '𝐪', r: '𝐫', s: '𝐬', t: '𝐭', u: '𝐮', v: '𝐯', w: '𝐰', x: '𝐱', y: '𝐲',
+                z: '𝐳' },
+            italic: { A: '𝐴', B: '𝐵', C: '𝐶', D: '𝐷', E: '𝐸', F: '𝐹', G: '𝐺', H: '𝐻', I: '𝐼', J: '𝐽', K: '𝐾', L: '𝐿',
+                M: '𝑀', N: '𝑁', O: '𝑂', P: '𝑃', Q: '𝑄', R: '𝑅', S: '𝑆', T: '𝑇', U: '𝑈', V: '𝑉', W: '𝑊', X: '𝑋', Y: '𝑌',
+                Z: '𝑍', a: '𝑎', b: '𝑏', c: '𝑐', d: '𝑑', e: '𝑒', f: '𝑓', g: '𝑔', h: 'ℎ', i: '𝑖', j: '𝑗', k: '𝑘', l: '𝑙',
+                m: '𝑚', n: '𝑛', o: '𝑜', p: '𝑝', q: '𝑞', r: '𝑟', s: '𝑠', t: '𝑡', u: '𝑢', v: '𝑣', w: '𝑤', x: '𝑥', y: '𝑦',
+                z: '𝑧' },
+            bolditalic: { A: '𝑨', B: '𝑩', C: '𝑪', D: '𝑫', E: '𝑬', F: '𝑭', G: '𝑮', H: '𝑯', I: '𝑰', J: '𝑱', K: '𝑲', L: '𝑳',
+                M: '𝑴', N: '𝑵', O: '𝑶', P: '𝑷', Q: '𝑸', R: '𝑹', S: '𝑺', T: '𝑻', U: '𝑼', V: '𝑽', W: '𝑾', X: '𝑿', Y: '𝒀',
+                Z: '𝒁', a: '𝒂', b: '𝒃', c: '𝒄', d: '𝒅', e: '𝒆', f: '𝒇', g: '𝒈', h: '𝒉', i: '𝒊', j: '𝒋', k: '𝒌', l: '𝒍',
+                m: '𝒎', n: '𝒏', o: '𝒐', p: '𝒑', q: '𝒒', r: '𝒓', s: '𝒔', t: '𝒕', u: '𝒖', v: '𝒗', w: '𝒘', x: '𝒙', y: '𝒚',
+                z: '𝒛' },
+            script: { A: '𝒜', B: 'ℬ', C: '𝒞', D: '𝒟', E: 'ℰ', F: 'ℱ', G: '𝒢', H: 'ℋ', I: 'ℐ', J: '𝒥', K: '𝒦', L: 'ℒ',
+                M: 'ℳ', N: '𝒩', O: '𝒪', P: '𝒫', Q: '𝒬', R: 'ℛ', S: '𝒮', T: '𝒯', U: '𝒰', V: '𝒱', W: '𝒲', X: '𝒳', Y: '𝒴',
+                Z: '𝒵', a: '𝒶', b: '𝒷', c: '𝒸', d: '𝒹', e: 'ℯ', f: '𝒻', g: 'ℊ', h: '𝒽', i: '𝒾', j: '𝒿', k: '𝓀', l: '𝓁',
+                m: '𝓂', n: '𝓃', o: 'ℴ', p: '𝓅', q: '𝓆', r: '𝓇', s: '𝓈', t: '𝓉', u: '𝓊', v: '𝓋', w: '𝓌', x: '𝓍', y: '𝓎',
+                z: '𝓏' },
+            boldscript: { A: '𝓐', B: '𝓑', C: '𝓒', D: '𝓓', E: '𝓔', F: '𝓕', G: '𝓖', H: '𝓗', I: '𝓘', J: '𝓙', K: '𝓚', L: '𝓛',
+                M: '𝓜', N: '𝓝', O: '𝓞', P: '𝓟', Q: '𝓠', R: '𝓡', S: '𝓢', T: '𝓣', U: '𝓤', V: '𝓥', W: '𝓦', X: '𝓧', Y: '𝓨',
+                Z: '𝓩', a: '𝓪', b: '𝓫', c: '𝓬', d: '𝓭', e: '𝓮', f: '𝓯', g: '𝓰', h: '𝓱', i: '𝓲', j: '𝓳', k: '𝓴', l: '𝓵',
+                m: '𝓶', n: '𝓷', o: '𝓸', p: '𝓹', q: '𝓺', r: '𝓻', s: '𝓼', t: '𝓽', u: '𝓾', v: '𝓿', w: '𝔀', x: '𝔁', y: '𝔂',
+                z: '𝔃' },
+            fraktur: { A: '𝔄', B: '𝔅', C: 'ℭ', D: '𝔇', E: '𝔈', F: '𝔉', G: '𝔊', H: 'ℌ', I: 'ℑ', J: '𝔍', K: '𝔎', L: '𝔏',
+                M: '𝔐', N: '𝔑', O: '𝔒', P: '𝔓', Q: '𝔔', R: 'ℜ', S: '𝔖', T: '𝔗', U: '𝔘', V: '𝔙', W: '𝔚', X: '𝔛', Y: '𝔜',
+                Z: 'ℨ', a: '𝔞', b: '𝔟', c: '𝔠', d: '𝔡', e: '𝔢', f: '𝔣', g: '𝔤', h: '𝔥', i: '𝔦', j: '𝔧', k: '𝔨', l: '𝔩',
+                m: '𝔪', n: '𝔫', o: '𝔬', p: '𝔭', q: '𝔮', r: '𝔯', s: '𝔰', t: '𝔱', u: '𝔲', v: '𝔳', w: '𝔴', x: '𝔵', y: '𝔶',
+                z: '𝔷' },
+            boldfraktur: { A: '𝕬', B: '𝕭', C: '𝕮', D: '𝕯', E: '𝕰', F: '𝕱', G: '𝕲', H: '𝕳', I: '𝕴', J: '𝕵', K: '𝕶', L: '𝕷',
+                M: '𝕸', N: '𝕹', O: '𝕺', P: '𝕻', Q: '𝕼', R: '𝕽', S: '𝕾', T: '𝕿', U: '𝖀', V: '𝖁', W: '𝖂', X: '𝖃', Y: '𝖄',
+                Z: '𝖅', a: '𝖆', b: '𝖇', c: '𝖈', d: '𝖉', e: '𝖊', f: '𝖋', g: '𝖌', h: '𝖍', i: '𝖎', j: '𝖏', k: '𝖐', l: '𝖑',
+                m: '𝖒', n: '𝖓', o: '𝖔', p: '𝖕', q: '𝖖', r: '𝖗', s: '𝖘', t: '𝖙', u: '𝖚', v: '𝖛', w: '𝖜', x: '𝖝', y: '𝖞',
+                z: '𝖟' },
+            doublestruck: { A: '𝔸', B: '𝔹', C: 'ℂ', D: '𝔻', E: '𝔼', F: '𝔽', G: '𝔾', H: 'ℍ', I: '𝕀', J: '𝕁', K: '𝕂', L: '𝕃',
+                M: '𝕄', N: 'ℕ', O: '𝕆', P: 'ℙ', Q: 'ℚ', R: 'ℝ', S: '𝕊', T: '𝕋', U: '𝕌', V: '𝕍', W: '𝕎', X: '𝕏', Y: '𝕐',
+                Z: 'ℤ', a: '𝕒', b: '𝕓', c: '𝕔', d: '𝕕', e: '𝕖', f: '𝕗', g: '𝕘', h: '𝕙', i: '𝕚', j: '𝕛', k: '𝕜', l: '𝕝',
+                m: '𝕞', n: '𝕟', o: '𝕠', p: '𝕡', q: '𝕢', r: '𝕣', s: '𝕤', t: '𝕥', u: '𝕦', v: '𝕧', w: '𝕨', x: '𝕩', y: '𝕪',
+                z: '𝕫' },
+            monospace: { A: '𝙰', B: '𝙱', C: '𝙲', D: '𝙳', E: '𝙴', F: '𝙵', G: '𝙶', H: '𝙷', I: '𝙸', J: '𝙹', K: '𝙺', L: '𝙻',
+                M: '𝙼', N: '𝙽', O: '𝙾', P: '𝙿', Q: '𝚀', R: '𝚁', S: '𝚂', T: '𝚃', U: '𝚄', V: '𝚅', W: '𝚆', X: '𝚇', Y: '𝚈',
+                Z: '𝚉', a: '𝚊', b: '𝚋', c: '𝚌', d: '𝚍', e: '𝚎', f: '𝚏', g: '𝚐', h: '𝚑', i: '𝚒', j: '𝚓', k: '𝚔', l: '𝚕',
+                m: '𝚖', n: '𝚗', o: '𝚘', p: '𝚙', q: '𝚚', r: '𝚛', s: '𝚜', t: '𝚝', u: '𝚞', v: '𝚟', w: '𝚠', x: '𝚡', y: '𝚢',
+                z: '𝚣' },
+            sans: { A: '𝖠', B: '𝖡', C: '𝖢', D: '𝖣', E: '𝖤', F: '𝖥', G: '𝖦', H: '𝖧', I: '𝖨', J: '𝖩', K: '𝖪', L: '𝖫',
+                M: '𝖬', N: '𝖭', O: '𝖮', P: '𝖯', Q: '𝖰', R: '𝖱', S: '𝖲', T: '𝖳', U: '𝖴', V: '𝖵', W: '𝖶', X: '𝖷', Y: '𝖸',
+                Z: '𝖹', a: '𝖺', b: '𝖻', c: '𝖼', d: '𝖽', e: '𝖾', f: '𝖿', g: '𝗀', h: '𝗁', i: '𝗂', j: '𝗃', k: '𝗄', l: '𝗅',
+                m: '𝗆', n: '𝗇', o: '𝗈', p: '𝗉', q: '𝗊', r: '𝗋', s: '𝗌', t: '𝗍', u: '𝗎', v: '𝗏', w: '𝗐', x: '𝗑', y: '𝗒',
+                z: '𝗓' },
+            sansbold: { A: '𝗔', B: '𝗕', C: '𝗖', D: '𝗗', E: '𝗘', F: '𝗙', G: '𝗚', H: '𝗛', I: '𝗜', J: '𝗝', K: '𝗞', L: '𝗟',
+                M: '𝗠', N: '𝗡', O: '𝗢', P: '𝗣', Q: '𝗤', R: '𝗥', S: '𝗦', T: '𝗧', U: '𝗨', V: '𝗩', W: '𝗪', X: '𝗫', Y: '𝗬',
+                Z: '𝗭', a: '𝗮', b: '𝗯', c: '𝗰', d: '𝗱', e: '𝗲', f: '𝗳', g: '𝗴', h: '𝗵', i: '𝗶', j: '𝗷', k: '𝗸', l: '𝗹',
+                m: '𝗺', n: '𝗻', o: '𝗼', p: '𝗽', q: '𝗾', r: '𝗿', s: '𝘀', t: '𝘁', u: '𝘂', v: '𝘃', w: '𝘄', x: '𝘅', y: '𝘆',
+                z: '𝘇' },
+            sansitalic: { A: '𝘈', B: '𝘉', C: '𝘊', D: '𝘋', E: '𝘌', F: '𝘍', G: '𝘎', H: '𝘏', I: '𝘐', J: '𝘑', K: '𝘒', L: '𝘓',
+                M: '𝘔', N: '𝘕', O: '𝘖', P: '𝘗', Q: '𝘘', R: '𝘙', S: '𝘚', T: '𝘛', U: '𝘜', V: '𝘝', W: '𝘞', X: '𝘟', Y: '𝘠',
+                Z: '𝘡', a: '𝘢', b: '𝘣', c: '𝘤', d: '𝘥', e: '𝘦', f: '𝘧', g: '𝘨', h: '𝘩', i: '𝘪', j: '𝘫', k: '𝘬', l: '𝘭',
+                m: '𝘮', n: '𝘯', o: '𝘰', p: '𝘱', q: '𝘲', r: '𝘳', s: '𝘴', t: '𝘵', u: '𝘶', v: '𝘷', w: '𝘸', x: '𝘹', y: '𝘺',
+                z: '𝘻' },
+            sansbolditalic: { A: '𝘼', B: '𝘽', C: '𝘾', D: '𝘿', E: '𝙀', F: '𝙁', G: '𝙂', H: '𝙃', I: '𝙄', J: '𝙅', K: '𝙆',
+                L: '𝙇', M: '𝙈', N: '𝙉', O: '𝙊', P: '𝙋', Q: '𝙌', R: '𝙍', S: '𝙎', T: '𝙏', U: '𝙐', V: '𝙑', W: '𝙒', X: '𝙓',
+                Y: '𝙔', Z: '𝙕', a: '𝙖', b: '𝙗', c: '𝙘', d: '𝙙', e: '𝙚', f: '𝙛', g: '𝙜', h: '𝙝', i: '𝙞', j: '𝙟', k: '𝙠',
+                l: '𝙡', m: '𝙢', n: '𝙣', o: '𝙤', p: '𝙥', q: '𝙦', r: '𝙧', s: '𝙨', t: '𝙩', u: '𝙪', v: '𝙫', w: '𝙬', x: '𝙭',
+                y: '𝙮', z: '𝙯' },
+            circled: { A: 'Ⓐ', B: 'Ⓑ', C: 'Ⓒ', D: 'Ⓓ', E: 'Ⓔ', F: 'Ⓕ', G: 'Ⓖ', H: 'Ⓗ', I: 'Ⓘ', J: 'Ⓙ', K: 'Ⓚ', L: 'Ⓛ',
+                M: 'Ⓜ', N: 'Ⓝ', O: 'Ⓞ', P: 'Ⓟ', Q: 'Ⓠ', R: 'Ⓡ', S: 'Ⓢ', T: 'Ⓣ', U: 'Ⓤ', V: 'Ⓥ', W: 'Ⓦ', X: 'Ⓧ', Y: 'Ⓨ',
+                Z: 'Ⓩ', a: 'ⓐ', b: 'ⓑ', c: 'ⓒ', d: 'ⓓ', e: 'ⓔ', f: 'ⓕ', g: 'ⓖ', h: 'ⓗ', i: 'ⓘ', j: 'ⓙ', k: 'ⓚ', l: 'ⓛ',
+                m: 'ⓜ', n: 'ⓝ', o: 'ⓞ', p: 'ⓟ', q: 'ⓠ', r: 'ⓡ', s: 'ⓢ', t: 'ⓣ', u: 'ⓤ', v: 'ⓥ', w: 'ⓦ', x: 'ⓧ', y: 'ⓨ',
+                z: 'ⓩ' },
+            parenthesized: { a: '⒜', b: '⒝', c: '⒞', d: '⒟', e: '⒠', f: '⒡', g: '⒢', h: '⒣', i: '⒤', j: '⒥', k: '⒦',
+                l: '⒧', m: '⒨', n: '⒩', o: '⒪', p: '⒫', q: '⒬', r: '⒭', s: '⒮', t: '⒯', u: '⒰', v: '⒱', w: '⒲', x: '⒳',
+                y: '⒴', z: '⒵' },
+            fullwidth: { A: 'Ａ', B: 'Ｂ', C: 'Ｃ', D: 'Ｄ', E: 'Ｅ', F: 'Ｆ', G: 'Ｇ', H: 'Ｈ', I: 'Ｉ', J: 'Ｊ', K: 'Ｋ', L: 'Ｌ',
+                M: 'Ｍ', N: 'Ｎ', O: 'Ｏ', P: 'Ｐ', Q: 'Ｑ', R: 'Ｒ', S: 'Ｓ', T: 'Ｔ', U: 'Ｕ', V: 'Ｖ', W: 'Ｗ', X: 'Ｘ', Y: 'Ｙ',
+                Z: 'Ｚ', a: 'ａ', b: 'ｂ', c: 'ｃ', d: 'ｄ', e: 'ｅ', f: 'ｆ', g: 'ｇ', h: 'ｈ', i: 'ｉ', j: 'ｊ', k: 'ｋ', l: 'ｌ',
+                m: 'ｍ', n: 'ｎ', o: 'ｏ', p: 'ｐ', q: 'ｑ', r: 'ｒ', s: 'ｓ', t: 'ｔ', u: 'ｕ', v: 'ｖ', w: 'ｗ', x: 'ｘ', y: 'ｙ',
+                z: 'ｚ' },
+            smallcaps: { A: 'ᴀ', B: 'ʙ', C: 'ᴄ', D: 'ᴅ', E: 'ᴇ', F: 'ꜰ', G: 'ɢ', H: 'ʜ', I: 'ɪ', J: 'ᴊ', K: 'ᴋ', L: 'ʟ',
+                M: 'ᴍ', N: 'ɴ', O: 'ᴏ', P: 'ᴘ', Q: 'ǫ', R: 'ʀ', S: 'ꜱ', T: 'ᴛ', U: 'ᴜ', V: 'ᴠ', W: 'ᴡ', X: 'x', Y: 'ʏ',
+                Z: 'ᴢ' },
+            superscript: { a: 'ᵃ', b: 'ᵇ', c: 'ᶜ', d: 'ᵈ', e: 'ᵉ', f: 'ᶠ', g: 'ᵍ', h: 'ʰ', i: 'ⁱ', j: 'ʲ', k: 'ᵏ', l: 'ˡ',
+                m: 'ᵐ', n: 'ⁿ', o: 'ᵒ', p: 'ᵖ', q: 'ᑫ', r: 'ʳ', s: 'ˢ', t: 'ᵗ', u: 'ᵘ', v: 'ᵛ', w: 'ʷ', x: 'ˣ', y: 'ʸ',
+                z: 'ᶻ' },
+            subscript: { a: 'ₐ', b: '♭', c: '꜀', d: 'ᵈ', e: 'ₑ', f: 'ꜰ', g: 'ᵍ', h: 'ₕ', i: 'ᵢ', j: 'ⱼ', k: 'ₖ', l: 'ₗ',
+                m: 'ₘ', n: 'ₙ', o: 'ₒ', p: 'ₚ', q: 'ꞯ', r: 'ᵣ', s: 'ₛ', t: 'ₜ', u: 'ᵤ', v: 'ᵥ', w: 'w', x: 'ₓ', y: 'ᵧ',
+                z: 'ᵤ' },
+            upside: { A: '∀', B: '𐌁', C: 'Ɔ', D: '◖', E: 'Ǝ', F: 'Ⅎ', G: '⅁', H: 'H', I: 'I', J: 'ſ', K: 'ʞ', L: '⅂',
+                M: 'W', N: 'N', O: 'O', P: 'Ԁ', Q: 'Q', R: 'ᴚ', S: 'S', T: '┴', U: '∩', V: 'Λ', W: 'M', X: 'X', Y: 'ʎ',
+                Z: 'Z', a: 'ɐ', b: 'q', c: 'ɔ', d: 'p', e: 'ǝ', f: 'ɟ', g: 'ƃ', h: 'ɥ', i: 'ᴉ', j: 'ɾ', k: 'ʞ', l: 'l',
+                m: 'ɯ', n: 'u', o: 'o', p: 'd', q: 'b', r: 'ɹ', s: 's', t: 'ʇ', u: 'n', v: 'ʌ', w: 'ʍ', x: 'x', y: 'ʎ',
+                z: 'z' },
+            mirror: { A: 'A', B: 'B', C: 'C', D: 'D', E: 'E', F: 'F', G: 'G', H: 'H', I: 'I', J: 'J', K: 'K', L: 'L',
+                M: 'M', N: 'N', O: 'O', P: 'P', Q: 'Q', R: 'R', S: 'S', T: 'T', U: 'U', V: 'V', W: 'W', X: 'X', Y: 'Y',
+                Z: 'Z', a: 'ɒ', b: 'd', c: 'ɔ', d: 'b', e: 'ɘ', f: 'ʇ', g: 'ɓ', h: 'ʜ', i: 'i', j: 'ɾ', k: 'ʞ', l: 'l',
+                m: 'm', n: 'n', o: 'o', p: 'q', q: 'p', r: 'ɿ', s: 'ƨ', t: 'ƚ', u: 'u', v: 'v', w: 'w', x: 'x', y: 'y',
+                z: 'z' },
+        };
+
+        // =====================================================================
+        //  DECORATIONS
+        // =====================================================================
+        const DECORATIONS = [
+            { prefix: '★', suffix: '', label: 'Star Pre' },
+            { prefix: '✨', suffix: '', label: 'Sparkle Pre' },
+            { prefix: '🔥', suffix: '', label: 'Fire Pre' },
+            { prefix: '💀', suffix: '', label: 'Skull Pre' },
+            { prefix: '👑', suffix: '', label: 'Crown Pre' },
+            { prefix: '⚡', suffix: '', label: 'Bolt Pre' },
+            { prefix: '💎', suffix: '', label: 'Diamond Pre' },
+            { prefix: '🎯', suffix: '', label: 'Target Pre' },
+            { prefix: '🏆', suffix: '', label: 'Trophy Pre' },
+            { prefix: '🛡', suffix: '', label: 'Shield Pre' },
+            { prefix: '', suffix: '★', label: 'Star Suf' },
+            { prefix: '', suffix: '✨', label: 'Sparkle Suf' },
+            { prefix: '', suffix: '🔥', label: 'Fire Suf' },
+            { prefix: '', suffix: '💀', label: 'Skull Suf' },
+            { prefix: '', suffix: '👑', label: 'Crown Suf' },
+            { prefix: '', suffix: '⚡', label: 'Bolt Suf' },
+            { prefix: '', suffix: '💎', label: 'Diamond Suf' },
+            { prefix: '', suffix: '🎯', label: 'Target Suf' },
+            { prefix: '', suffix: '🏆', label: 'Trophy Suf' },
+            { prefix: '', suffix: '🛡', label: 'Shield Suf' },
+            { prefix: '꧁༒', suffix: '༒꧂', label: 'Royal 1' },
+            { prefix: '★彡', suffix: '彡★', label: 'Star' },
+            { prefix: '『', suffix: '』', label: 'Bracket' },
+            { prefix: '༺', suffix: '༻', label: 'Floral' },
+            { prefix: '☬', suffix: '☬', label: 'Khanda' },
+            { prefix: '꧁☠', suffix: '☠꧂', label: 'Skull' },
+            { prefix: '꧁𓊈', suffix: '𓊉꧂', label: 'Egyptian' },
+            { prefix: '༒☬', suffix: '☬༒', label: 'Royal 2' },
+            { prefix: '✦', suffix: '✦', label: 'Sparkle' },
+            { prefix: '≪', suffix: '≫', label: 'Angle' },
+            { prefix: '◥꧁', suffix: '꧂◤', label: 'Border' },
+            { prefix: '⋆｡°✩', suffix: '✩°｡⋆', label: 'Dainty' },
+            { prefix: '✧', suffix: '✧', label: 'Diamond' },
+            { prefix: '꧁', suffix: '꧂', label: 'Simple' },
+            { prefix: '⚜️', suffix: '⚜️', label: 'Fleur' },
+            { prefix: '⊰', suffix: '⊱', label: 'Wave' },
+            { prefix: '❝', suffix: '❞', label: 'Quotes' },
+            { prefix: '『✧', suffix: '✧』', label: 'Glow' },
+            { prefix: '♛', suffix: '♛', label: 'Crown' },
+            { prefix: '⛩️', suffix: '⛩️', label: 'Gate' },
+            { prefix: '🔥༺', suffix: '༻🔥', label: 'Fire' },
+            { prefix: '⭐', suffix: '⭐', label: 'Star 2' },
+            { prefix: '◤', suffix: '◥', label: 'Corner' },
+            { prefix: '▬▬ι═══════ﺤ', suffix: '', label: 'Sword' },
+            { prefix: '⎝', suffix: '⎠', label: 'Bracket 2' },
+            { prefix: '『★', suffix: '★』', label: 'Star Bracket' },
+            { prefix: '༄', suffix: '༄', label: 'Wind' },
+            { prefix: '꧁༺', suffix: '༻꧂', label: 'Royal Floral' },
+            { prefix: '✿', suffix: '✿', label: 'Flower' },
+            { prefix: '『✧', suffix: '✧』', label: 'Diamond Bracket' },
+            { prefix: '꧁⚔', suffix: '⚔꧂', label: 'Sword Royal' },
+            { prefix: '꧁🔥', suffix: '🔥꧂', label: 'Fire Royal' },
+            { prefix: '꧁💀', suffix: '💀꧂', label: 'Skull Royal' },
+            { prefix: '꧁⚡', suffix: '⚡꧂', label: 'Bolt Royal' },
+            { prefix: '꧁🎯', suffix: '🎯꧂', label: 'Target Royal' },
+            { prefix: '꧁🏆', suffix: '🏆꧂', label: 'Trophy Royal' },
+            { prefix: '꧁🛡', suffix: '🛡꧂', label: 'Shield Royal' },
+            { prefix: '🌸', suffix: '🌸', label: 'Sakura' },
+            { prefix: '🌺', suffix: '🌺', label: 'Hibiscus' },
+            { prefix: '🌹', suffix: '🌹', label: 'Rose' },
+            { prefix: '🌻', suffix: '🌻', label: 'Sunflower' },
+            { prefix: '🌷', suffix: '🌷', label: 'Tulip' },
+            { prefix: '≋', suffix: '≋', label: 'Wave' },
+            { prefix: '⌇', suffix: '⌇', label: 'Squiggle' },
+            { prefix: '◢', suffix: '◣', label: 'Triangle' },
+            { prefix: '♛', suffix: '♛', label: 'King' },
+            { prefix: '♚', suffix: '♚', label: 'Queen' },
+            { prefix: '⧫', suffix: '⧫', label: 'Diamond' },
+            { prefix: '⨁', suffix: '⨁', label: 'Circle Plus' },
+            { prefix: '『', suffix: '』', label: 'Clan' },
+            { prefix: '【', suffix: '】', label: 'Clan 2' },
+            { prefix: '〖', suffix: '〗', label: 'Clan 3' },
+            { prefix: 'ʚ', suffix: 'ɞ', label: 'Wings' },
+            { prefix: '✽', suffix: '✽', label: 'Star 3' },
+            { prefix: '✺', suffix: '✺', label: 'Star 4' },
+        ];
+
+        // =====================================================================
+        //  SYMBOLS
+        // =====================================================================
+        const SYMBOLS = {
+            hearts: ['❤', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎', '♥', '❤️‍🔥', '💗', '💖', '💕', '💞', '💓', '❣', '💔'],
+            crowns: ['👑', '♛', '♚', '⚜', '👸', '🤴', '🫅', '✠', '✙', '✚'],
+            stars: ['⭐', '🌟', '✨', '🌠', '💫', '✧', '✦', '⋆', '✶', '✷', '✸', '✹', '✺', '✻', '✼', '✽', '✾', '✿', '❀', '❁', '❂',
+                '❃', '❄', '❅', '❆', '❇', '❈', '❉', '❊', '❋', '★', '☆', '✩', '✪', '✫', '✬', '✭', '✮', '✯', '✰'
+            ],
+            fire: ['🔥', '💥', '🌋', '🧨', '💣', '⚡', '💫', '⭐', '🌪', '🌊', '❄', '☄', '🌠', '🎆', '🎇'],
+            gaming: ['🎮', '🕹', '🎯', '🎲', '🎳', '⚔', '🗡', '🏹', '🛡', '🏆', '🥇', '🥈', '🥉', '🎖', '🏅', '🎪', '🎭', '🃏',
+                '♠', '♥', '♦', '♣', '🎴'
+            ],
+            aesthetic: ['🌸', '🌺', '🌻', '🌹', '🌷', '🌼', '💐', '🥀', '🌿', '☘', '🍀', '🌱', '🌵', '🌴', '🌲', '🌳', '🌾', '🌽',
+                '⚜', '✿', '❀'
+            ],
+            music: ['🎵', '🎶', '🎼', '🎤', '🎧', '🎷', '🎸', '🎹', '🎺', '🎻', '🥁', '🎬', '🎭', '🎮', '🎯', '🎶', '♩', '♪', '♫',
+                '♬', '♭', '♮', '♯'
+            ],
+            modern: ['➡', '⬅', '⬆', '⬇', '↗', '↘', '↙', '↖', '↕', '↔', '↩', '↪', '➔', '➜', '➝', '➞', '➟', '➠', '➡', '➢',
+                '➣', '➤', '➥', '➦', '➧', '➨', '➩', '➪', '➫', '➬', '➭', '➮', '➯', '➰', '➱', '➲', '➳', '➴', '➵', '➶', '➷',
+                '➸', '➹', '➺', '➻', '➼', '➽', '➾'
+            ],
+            vip: ['👑', '♛', '♚', '⚜', '✠', '✙', '✚', '✛', '✜', '✝', '✞', '✟', '✠', '✡', '✢', '✣', '✤', '✥', '✦', '✧'],
+            premium: ['💎', '🔱', '🏆', '👑', '💠', '🔮', '💯', '🌟', '⭐', '✨'],
+        };
+
+        // =====================================================================
+        //  USER CATEGORY MAPPING
+        // =====================================================================
+        const USER_CATEGORY_MAP = {
+            'bold': '🖤 Stylish Names',
+            'italic': '📸 Instagram',
+            'bolditalic': '📸 Instagram',
+            'script': '🔥 Trending',
+            'boldscript': '🔥 Trending',
+            'fraktur': '👑 VIP / Royal',
+            'boldfraktur': '👑 VIP / Royal',
+            'doublestruck': '💎 Premium',
+            'monospace': '💬 Discord',
+            'sans': '⭐ Popular',
+            'sansbold': '⭐ Popular',
+            'sansitalic': '📸 Instagram',
+            'sansbolditalic': '📸 Instagram',
+            'circled': '💖 Cute',
+            'parenthesized': '🎨 Decorative',
+            'fullwidth': '🎵 TikTok',
+            'smallcaps': '📸 Instagram',
+            'superscript': '🌟 Fancy Fonts',
+            'subscript': '🌟 Fancy Fonts',
+            'upside': '😎 Attitude',
+            'mirror': '😎 Attitude',
+        };
+
+        const USER_CATEGORIES = [
+            { id: 'trending', label: '🔥 Trending', icon: '🔥' },
+            { id: 'popular', label: '⭐ Popular', icon: '⭐' },
+            { id: 'vip', label: '👑 VIP / Royal', icon: '👑' },
+            { id: 'gaming', label: '🎮 Gaming', icon: '🎮' },
+            { id: 'attitude', label: '😎 Attitude', icon: '😎' },
+            { id: 'instagram', label: '📸 Instagram', icon: '📸' },
+            { id: 'tiktok', label: '🎵 TikTok', icon: '🎵' },
+            { id: 'discord', label: '💬 Discord', icon: '💬' },
+            { id: 'aesthetic', label: '✨ Aesthetic', icon: '✨' },
+            { id: 'cute', label: '💖 Cute', icon: '💖' },
+            { id: 'pro', label: '🏆 Pro Gamer', icon: '🏆' },
+            { id: 'stylish', label: '🖤 Stylish Names', icon: '🖤' },
+            { id: 'fancy', label: '🌟 Fancy Fonts', icon: '🌟' },
+            { id: 'bgmi', label: '🎯 BGMI Names', icon: '🎯' },
+            { id: 'freefire', label: '🔥 Free Fire Names', icon: '🔥' },
+            { id: 'social', label: '📱 Social Media', icon: '📱' },
+            { id: 'decorative', label: '🎨 Decorative', icon: '🎨' },
+            { id: 'all', label: '🔤 All Styles', icon: '🔤' },
+        ];
+
+        // =====================================================================
+        //  STATE
+        // =====================================================================
+        let currentText = '';
+        let currentCategory = 'all';
+        let searchQuery = '';
+        let allStyles = [];
+        let filteredStyles = [];
+        let currentPage = 1;
+        const PAGE_SIZE = 50;
+        let favorites = JSON.parse(localStorage.getItem('stylishFavorites')) || [];
+        let history = JSON.parse(localStorage.getItem('stylishHistory')) || [];
+        let styleIdCounter = 0;
+        let debounceTimer = null;
+        let symbolCategory = 'all';
+        let symbolOffset = 0;
+        const SYMBOLS_PER_PAGE = 40;
+        let currentSymbols = [];
+        let isFirstSymbolLoad = true;
+
+        // =====================================================================
+        //  HELPERS
+        // =====================================================================
+        function applyMap(text, map) {
+            let result = '';
+            for (const ch of text) {
+                result += map[ch] || ch;
+            }
+            return result;
+        }
+
+        function reverseString(str) {
+            return str.split('').reverse().join('');
+        }
+
+        function applyDecoration(text, deco) {
+            return deco.prefix + text + deco.suffix;
+        }
+
+        function getUserCategory(style) {
+            if (style.isDecoration) {
+                const decoLabel = style.label || '';
+                if (decoLabel.includes('Royal') || decoLabel.includes('VIP') || decoLabel.includes('Crown') || decoLabel
+                    .includes('King') || decoLabel.includes('Queen')) {
+                    return 'vip';
+                }
+                if (decoLabel.includes('Gaming') || decoLabel.includes('Pro') || decoLabel.includes('Clan')) {
+                    return 'gaming';
+                }
+                if (decoLabel.includes('Aesthetic') || decoLabel.includes('Sakura') || decoLabel.includes('Floral') ||
+                    decoLabel.includes('Dainty')) {
+                    return 'aesthetic';
+                }
+                if (decoLabel.includes('Cute') || decoLabel.includes('Love') || decoLabel.includes('Heart')) {
+                    return 'cute';
+                }
+                if (decoLabel.includes('Fire') || decoLabel.includes('Skull') || decoLabel.includes('Bolt')) {
+                    return 'attitude';
+                }
+                return 'decorative';
+            }
+
+            const techCat = style.category;
+            if (USER_CATEGORY_MAP[techCat]) {
+                const userLabel = USER_CATEGORY_MAP[techCat];
+                for (const uc of USER_CATEGORIES) {
+                    if (uc.label === userLabel) {
+                        return uc.id;
+                    }
+                }
+                for (const uc of USER_CATEGORIES) {
+                    if (uc.label.includes(userLabel)) return uc.id;
+                }
+            }
+
+            if (techCat === 'glitch') return 'attitude';
+            if (techCat === 'upside' || techCat === 'mirror') return 'attitude';
+            if (techCat === 'circled') return 'cute';
+            if (techCat === 'parenthesized') return 'decorative';
+            if (techCat === 'fullwidth') return 'tiktok';
+            if (techCat === 'smallcaps') return 'instagram';
+            if (techCat === 'superscript' || techCat === 'subscript') return 'fancy';
+            if (techCat === 'monospace') return 'discord';
+            if (techCat === 'sans' || techCat === 'sansbold' || techCat === 'sansitalic' || techCat === 'sansbolditalic')
+                return 'social';
+            if (techCat === 'bold' || techCat === 'italic' || techCat === 'bolditalic') return 'stylish';
+            return 'all';
+        }
+
+        function getUserCategoryLabel(catId) {
+            const found = USER_CATEGORIES.find(uc => uc.id === catId);
+            return found ? found.label : catId;
+        }
+
+        function getBadges(style) {
+            const badges = [];
+            const userCat = getUserCategory(style);
+
+            switch (userCat) {
+                case 'trending':
+                    badges.push({ emoji: '🔥', label: 'Trending', cls: 'trending' });
+                    break;
+                case 'popular':
+                    badges.push({ emoji: '⭐', label: 'Popular', cls: 'popular' });
+                    break;
+                case 'vip':
+                    badges.push({ emoji: '💎', label: 'Premium', cls: 'premium' });
+                    break;
+                case 'gaming':
+                    badges.push({ emoji: '🎮', label: 'Gaming', cls: 'gaming' });
+                    break;
+                case 'aesthetic':
+                    badges.push({ emoji: '💖', label: 'Aesthetic', cls: 'aesthetic' });
+                    break;
+                case 'attitude':
+                    badges.push({ emoji: '😎', label: 'Attitude', cls: 'attitude' });
+                    break;
+                case 'pro':
+                    badges.push({ emoji: '🏆', label: 'Pro', cls: 'pro' });
+                    break;
+                default:
+                    break;
+            }
+
+            if (badges.length === 0 && style.isDecoration) {
+                badges.push({ emoji: '🎨', label: 'Deco', cls: 'aesthetic' });
+            }
+
+            return badges.slice(0, 2);
+        }
+
+        // =====================================================================
+        //  STYLE GENERATOR
+        // =====================================================================
+        function generateStyles(text) {
+            if (!text || text.trim() === '') return [];
+            const styles = [];
+            const baseMaps = Object.keys(UC);
+
+            for (const mapName of baseMaps) {
+                const map = UC[mapName];
+                const transformed = applyMap(text, map);
+                if (transformed !== text) {
+                    styles.push({
+                        id: styleIdCounter++,
+                        text: transformed,
+                        category: mapName,
+                        label: mapName.charAt(0).toUpperCase() + mapName.slice(1),
+                        isDecoration: false,
+                    });
+                }
+            }
+
+            for (const deco of DECORATIONS) {
+                const decorated = applyDecoration(text, deco);
+                styles.push({
+                    id: styleIdCounter++,
+                    text: decorated,
+                    category: 'decorative',
+                    label: deco.label,
+                    isDecoration: true,
+                });
+            }
+
+            const transformMaps = ['bold', 'italic', 'script', 'fraktur', 'doublestruck', 'monospace', 'sans', 'sansbold',
+                'circled', 'fullwidth', 'sansitalic', 'bolditalic'
+            ];
+            for (const mapName of transformMaps) {
+                const map = UC[mapName];
+                if (!map) continue;
+                const transformed = applyMap(text, map);
+                if (transformed !== text) {
+                    for (const deco of DECORATIONS) {
+                        const decorated = applyDecoration(transformed, deco);
+                        styles.push({
+                            id: styleIdCounter++,
+                            text: decorated,
+                            category: 'decorative',
+                            label: deco.label + ' + ' + mapName,
+                            isDecoration: true,
+                        });
+                    }
+                }
+            }
+
+            const upperText = text.toUpperCase();
+            for (const mapName of ['bold', 'sansbold', 'doublestruck', 'fraktur', 'monospace', 'sans', 'script']) {
+                const map = UC[mapName];
+                if (!map) continue;
+                const transformed = applyMap(upperText, map);
+                if (transformed !== upperText) {
+                    styles.push({
+                        id: styleIdCounter++,
+                        text: transformed,
+                        category: 'bold',
+                        label: mapName + ' (Uppercase)',
+                        isDecoration: false,
+                    });
+                }
+            }
+
+            let mixed = '';
+            for (let i = 0; i < text.length; i++) {
+                mixed += i % 2 === 0 ? text[i].toUpperCase() : text[i].toLowerCase();
+            }
+            styles.push({
+                id: styleIdCounter++,
+                text: mixed,
+                category: 'modern',
+                label: 'Alternating Case',
+                isDecoration: false,
+            });
+
+            const upsideMap = UC.upside || {};
+            const upsideText = applyMap(text, upsideMap);
+            if (upsideText !== text) {
+                styles.push({
+                    id: styleIdCounter++,
+                    text: reverseString(upsideText),
+                    category: 'upside',
+                    label: 'Upside Down',
+                    isDecoration: false,
+                });
+            }
+
+            const mirrorMap = UC.mirror || {};
+            const mirrorText = applyMap(text, mirrorMap);
+            if (mirrorText !== text) {
+                styles.push({
+                    id: styleIdCounter++,
+                    text: reverseString(mirrorText),
+                    category: 'mirror',
+                    label: 'Mirror Text',
+                    isDecoration: false,
+                });
+            }
+
+            const glitchChars = ['̅', '̲', '̰', '̴', '̷', '̸', '̽', '͂', '͆', '͊', '͋', '͌', '͑', '͒', '͗', '͛', 'ͣ', 'ͤ', 'ͥ', 'ͦ',
+                'ͧ', 'ͨ', 'ͩ', 'ͪ', 'ͫ', 'ͬ', 'ͭ', 'ͮ', 'ͯ'
+            ];
+            let glitchText = '';
+            for (const ch of text) {
+                glitchText += ch;
+                if (Math.random() > 0.35) {
+                    const count = Math.floor(Math.random() * 3) + 1;
+                    for (let i = 0; i < count; i++) {
+                        glitchText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+                    }
+                }
+            }
+            styles.push({
+                id: styleIdCounter++,
+                text: glitchText,
+                category: 'glitch',
+                label: 'Glitch / Zalgo',
+                isDecoration: false,
+            });
+
+            const emojiWraps = ['🔥', '⭐', '💀', '👑', '⚡', '💎', '🎯', '🏆', '❤️', '💜', '🌟', '🎮', '🛡', '🔱'];
+            for (const em of emojiWraps) {
+                styles.push({
+                    id: styleIdCounter++,
+                    text: em + ' ' + text + ' ' + em,
+                    category: 'decorative',
+                    label: 'Emoji: ' + em,
+                    isDecoration: true,
+                });
+            }
+
+            for (const deco of DECORATIONS.slice(0, 20)) {
+                const decorated = applyDecoration(upperText, deco);
+                styles.push({
+                    id: styleIdCounter++,
+                    text: decorated,
+                    category: 'decorative',
+                    label: deco.label + ' (Uppercase)',
+                    isDecoration: true,
+                });
+            }
+
+            const wideMap = UC.fullwidth || {};
+            const wideText = applyMap(text, wideMap);
+            if (wideText !== text) {
+                styles.push({
+                    id: styleIdCounter++,
+                    text: wideText,
+                    category: 'fullwidth',
+                    label: 'Wide Text',
+                    isDecoration: false,
+                });
+                for (const deco of DECORATIONS.slice(0, 15)) {
+                    styles.push({
+                        id: styleIdCounter++,
+                        text: applyDecoration(wideText, deco),
+                        category: 'decorative',
+                        label: deco.label + ' (Wide)',
+                        isDecoration: true,
+                    });
+                }
+            }
+
+            const smallMap = UC.smallcaps || {};
+            const smallText = applyMap(text.toUpperCase(), smallMap);
+            if (smallText !== text.toUpperCase()) {
+                styles.push({
+                    id: styleIdCounter++,
+                    text: smallText,
+                    category: 'smallcaps',
+                    label: 'Small Caps',
+                    isDecoration: false,
+                });
+            }
+
+            const superMap = UC.superscript || {};
+            const superText = applyMap(text, superMap);
+            if (superText !== text) {
+                styles.push({
+                    id: styleIdCounter++,
+                    text: superText,
+                    category: 'superscript',
+                    label: 'Superscript',
+                    isDecoration: false,
+                });
+            }
+            const subMap = UC.subscript || {};
+            const subText = applyMap(text, subMap);
+            if (subText !== text) {
+                styles.push({
+                    id: styleIdCounter++,
+                    text: subText,
+                    category: 'subscript',
+                    label: 'Subscript',
+                    isDecoration: false,
+                });
+            }
+
+            const parenMap = UC.parenthesized || {};
+            const parenText = applyMap(text, parenMap);
+            if (parenText !== text) {
+                styles.push({
+                    id: styleIdCounter++,
+                    text: parenText,
+                    category: 'parenthesized',
+                    label: 'Parenthesized',
+                    isDecoration: false,
+                });
+            }
+
+            const circledMap = UC.circled || {};
+            const circledText = applyMap(text, circledMap);
+            if (circledText !== text) {
+                styles.push({
+                    id: styleIdCounter++,
+                    text: circledText,
+                    category: 'circled',
+                    label: 'Circled',
+                    isDecoration: false,
+                });
+                for (const deco of DECORATIONS.slice(0, 10)) {
+                    styles.push({
+                        id: styleIdCounter++,
+                        text: applyDecoration(circledText, deco),
+                        category: 'decorative',
+                        label: deco.label + ' (Circled)',
+                        isDecoration: true,
+                    });
+                }
+            }
+
+            const biMap = UC.bolditalic || {};
+            const biText = applyMap(text, biMap);
+            if (biText !== text) {
+                for (const deco of DECORATIONS.slice(0, 10)) {
+                    styles.push({
+                        id: styleIdCounter++,
+                        text: applyDecoration(biText, deco),
+                        category: 'decorative',
+                        label: deco.label + ' (Bold Italic)',
+                        isDecoration: true,
+                    });
+                }
+            }
+
+            const frakMap = UC.fraktur || {};
+            const frakText = applyMap(text, frakMap);
+            if (frakText !== text) {
+                for (const deco of DECORATIONS.slice(0, 10)) {
+                    styles.push({
+                        id: styleIdCounter++,
+                        text: applyDecoration(frakText, deco),
+                        category: 'decorative',
+                        label: deco.label + ' (Fraktur)',
+                        isDecoration: true,
+                    });
+                }
+            }
+
+            const dsMap = UC.doublestruck || {};
+            const dsText = applyMap(text, dsMap);
+            if (dsText !== text) {
+                for (const deco of DECORATIONS.slice(0, 10)) {
+                    styles.push({
+                        id: styleIdCounter++,
+                        text: applyDecoration(dsText, deco),
+                        category: 'decorative',
+                        label: deco.label + ' (Double Struck)',
+                        isDecoration: true,
+                    });
+                }
+            }
+
+            const sansMap = UC.sans || {};
+            const sansText = applyMap(text, sansMap);
+            if (sansText !== text) {
+                for (const deco of DECORATIONS.slice(0, 8)) {
+                    styles.push({
+                        id: styleIdCounter++,
+                        text: applyDecoration(sansText, deco),
+                        category: 'decorative',
+                        label: deco.label + ' (Sans)',
+                        isDecoration: true,
+                    });
+                }
+            }
+
+            return styles;
+        }
+
+        // =====================================================================
+        //  DEDUPLICATION
+        // =====================================================================
+        function deduplicateStyles(styles) {
+            const seen = new Map();
+            const result = [];
+            for (const s of styles) {
+                const key = s.text;
+                if (!seen.has(key)) {
+                    seen.set(key, true);
+                    result.push(s);
+                }
+            }
+            return result;
+        }
+
+        // =====================================================================
+        //  FILTERING
+        // =====================================================================
+        function filterStyles(styles, category, query) {
+            let filtered = styles;
+            if (category !== 'all') {
+                filtered = filtered.filter(s => {
+                    const userCat = getUserCategory(s);
+                    return userCat === category;
+                });
+            }
+            if (query && query.trim()) {
+                const q = query.trim().toLowerCase();
+                filtered = filtered.filter(s => {
+                    const label = (s.label || '').toLowerCase();
+                    const text = s.text.toLowerCase();
+                    const userCat = getUserCategory(s);
+                    const userLabel = getUserCategoryLabel(userCat).toLowerCase();
+                    return label.includes(q) || text.includes(q) || userLabel.includes(q);
+                });
+            }
+            return filtered;
+        }
+
+        // =====================================================================
+        //  SORTING
+        // =====================================================================
+        function sortStyles(styles) {
+            const priority = {
+                'trending': 0,
+                'popular': 1,
+                'vip': 2,
+                'gaming': 3,
+                'attitude': 4,
+                'instagram': 5,
+                'tiktok': 6,
+                'discord': 7,
+                'aesthetic': 8,
+                'cute': 9,
+                'pro': 10,
+                'stylish': 11,
+                'fancy': 12,
+                'bgmi': 13,
+                'freefire': 14,
+                'social': 15,
+                'decorative': 16,
+            };
+
+            return [...styles].sort((a, b) => {
+                const ua = getUserCategory(a);
+                const ub = getUserCategory(b);
+                const pa = priority[ua] !== undefined ? priority[ua] : 99;
+                const pb = priority[ub] !== undefined ? priority[ub] : 99;
+                if (pa !== pb) return pa - pb;
+                return a.label.localeCompare(b.label);
+            });
+        }
+
+        // =====================================================================
+        //  GET TRENDING & POPULAR STYLES
+        // =====================================================================
+        function getTrendingStyles(styles) {
+            const trending = styles.filter(s => {
+                const userCat = getUserCategory(s);
+                return userCat === 'trending' || userCat === 'vip' || userCat === 'fancy';
+            });
+            const extra = styles.filter(s => s.isDecoration && (s.label.includes('Royal') || s.label.includes('VIP') ||
+                s.label.includes('Crown') || s.label.includes('King') || s.label.includes('Queen')));
+            const combined = [...trending, ...extra];
+            const seen = new Set();
+            const result = [];
+            for (const s of combined) {
+                if (!seen.has(s.text)) {
+                    seen.add(s.text);
+                    result.push(s);
+                }
+            }
+            return result.slice(0, 20);
+        }
+
+        function getPopularStyles(styles) {
+            const popular = styles.filter(s => {
+                const userCat = getUserCategory(s);
+                return userCat === 'popular' || userCat === 'instagram' || userCat === 'discord' || userCat === 'social';
+            });
+            const extra = styles.filter(s => s.isDecoration && (s.label.includes('Star') || s.label.includes('Sparkle') ||
+                s.label.includes('Glow')));
+            const combined = [...popular, ...extra];
+            const seen = new Set();
+            const result = [];
+            for (const s of combined) {
+                if (!seen.has(s.text)) {
+                    seen.add(s.text);
+                    result.push(s);
+                }
+            }
+            return result.slice(0, 20);
+        }
+
+        // =====================================================================
+        //  RENDER FUNCTIONS
+        // =====================================================================
+        function renderStyles() {
+            const grid = document.getElementById('resultsGrid');
+            const pagination = document.getElementById('paginationWrap');
+            const trendingContainer = document.getElementById('trendingContainer');
+            const popularContainer = document.getElementById('popularContainer');
+
+            if (allStyles.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state" role="status">
+                        <div class="empty-icon">✍️</div>
+                        <h3>Start Typing to Generate Styles</h3>
+                        <p>Enter any text above and see 500+ stylish variations appear instantly.</p>
+                    </div>
+                `;
+                pagination.innerHTML = '';
+                updateCounts(0);
+                trendingContainer.classList.add('section-empty');
+                popularContainer.classList.add('section-empty');
+                return;
+            }
+
+            if (currentCategory === 'all') {
+                const trendingStyles = getTrendingStyles(allStyles);
+                const popularStyles = getPopularStyles(allStyles);
+                renderFeaturedGrid('trendingGrid', trendingStyles, '🔥 Trending');
+                renderFeaturedGrid('popularGrid', popularStyles, '⭐ Popular');
+                trendingContainer.classList.remove('section-empty');
+                popularContainer.classList.remove('section-empty');
+            } else {
+                trendingContainer.classList.add('section-empty');
+                popularContainer.classList.add('section-empty');
+            }
+
+            let filtered = filterStyles(allStyles, currentCategory, searchQuery);
+            filtered = sortStyles(filtered);
+            filteredStyles = filtered;
+            const totalPages = Math.ceil(filteredStyles.length / PAGE_SIZE);
+            if (currentPage > totalPages) currentPage = totalPages || 1;
+
+            const start = (currentPage - 1) * PAGE_SIZE;
+            const pageStyles = filteredStyles.slice(start, start + PAGE_SIZE);
+
+            updateCounts(filteredStyles.length);
+
+            if (pageStyles.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state" role="status">
+                        <div class="empty-icon">🔍</div>
+                        <h3>No Styles Found</h3>
+                        <p>Try a different search term or category.</p>
+                    </div>
+                `;
+                pagination.innerHTML = '';
+                return;
+            }
+
+            const fragment = document.createDocumentFragment();
+            for (const style of pageStyles) {
+                const isFav = favorites.some(f => f.text === style.text);
+                const userCat = getUserCategory(style);
+                const displayLabel = getUserCategoryLabel(userCat);
+                const badges = getBadges(style);
+
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                card.setAttribute('role', 'listitem');
+                card.dataset.id = style.id;
+
+                const badgeWrap = document.createElement('div');
+                badgeWrap.className = 'badge-wrap';
+                for (const b of badges) {
+                    const span = document.createElement('span');
+                    span.className = `badge ${b.cls}`;
+                    span.textContent = b.emoji + ' ' + b.label;
+                    badgeWrap.appendChild(span);
+                }
+                card.appendChild(badgeWrap);
+
+                const preview = document.createElement('div');
+                preview.className = 'preview';
+                preview.textContent = style.text;
+                card.appendChild(preview);
+
+                const actions = document.createElement('div');
+                actions.className = 'card-actions';
+
+                const tag = document.createElement('span');
+                tag.className = 'style-tag';
+                tag.title = displayLabel;
+                tag.textContent = displayLabel;
+                actions.appendChild(tag);
+
+                const favBtn = document.createElement('button');
+                favBtn.className = `fav-btn ${isFav ? 'active' : ''}`;
+                favBtn.dataset.id = style.id;
+                favBtn.setAttribute('aria-label', isFav ? 'Remove from favorites' : 'Add to favorites');
+                favBtn.textContent = isFav ? '★' : '☆';
+                actions.appendChild(favBtn);
+
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'copy-btn';
+                copyBtn.dataset.text = encodeURIComponent(style.text);
+                copyBtn.setAttribute('aria-label', 'Copy style');
+                copyBtn.textContent = '📋 Copy';
+                actions.appendChild(copyBtn);
+
+                card.appendChild(actions);
+                fragment.appendChild(card);
+            }
+
+            grid.innerHTML = '';
+            grid.appendChild(fragment);
+
+            if (totalPages > 1) {
+                let pHtml = '';
+                pHtml +=
+                    `<button class="page-btn" data-page="${currentPage - 1}" ${currentPage <= 1 ? 'disabled' : ''} aria-label="Previous page">‹</button>`;
+                let startPage = Math.max(1, currentPage - 2);
+                let endPage = Math.min(totalPages, currentPage + 2);
+                if (startPage > 1) {
+                    pHtml += `<button class="page-btn" data-page="1">1</button>`;
+                    if (startPage > 2) pHtml += `<span class="page-info">…</span>`;
+                }
+                for (let i = startPage; i <= endPage; i++) {
+                    pHtml +=
+                        `<button class="page-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+                }
+                if (endPage < totalPages) {
+                    if (endPage < totalPages - 1) pHtml += `<span class="page-info">…</span>`;
+                    pHtml += `<button class="page-btn" data-page="${totalPages}">${totalPages}</button>`;
+                }
+                pHtml +=
+                    `<button class="page-btn" data-page="${currentPage + 1}" ${currentPage >= totalPages ? 'disabled' : ''} aria-label="Next page">›</button>`;
+                pHtml += `<span class="page-info">${currentPage} / ${totalPages}</span>`;
+                pagination.innerHTML = pHtml;
+
+                pagination.querySelectorAll('.page-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const page = parseInt(this.dataset.page);
+                        if (page >= 1 && page <= totalPages && page !== currentPage) {
+                            currentPage = page;
+                            renderStyles();
+                            document.getElementById('resultsContainer').scrollIntoView({ behavior: 'smooth',
+                                block: 'start' });
+                        }
+                    });
+                });
+            } else {
+                pagination.innerHTML = '';
+            }
+        }
+
+        function renderFeaturedGrid(gridId, styles, title) {
+            const grid = document.getElementById(gridId);
+            const container = grid.closest('.featured-section');
+            if (!styles || styles.length === 0) {
+                container.classList.add('section-empty');
+                grid.innerHTML = '';
+                return;
+            }
+            container.classList.remove('section-empty');
+
+            let html = '';
+            for (const style of styles.slice(0, 20)) {
+                const badges = getBadges(style);
+                const userCat = getUserCategory(style);
+                const displayLabel = getUserCategoryLabel(userCat);
+                html += `
+                    <div class="result-card" data-id="${style.id}">
+                        <div class="badge-wrap">
+                            ${badges.map(b => `<span class="badge ${b.cls}">${b.emoji} ${b.label}</span>`).join('')}
+                        </div>
+                        <div class="preview">${style.text}</div>
+                        <div class="card-actions">
+                            <span class="style-tag">${displayLabel}</span>
+                            <button class="copy-btn" data-text="${encodeURIComponent(style.text)}">📋 Copy</button>
+                        </div>
+                    </div>
+                `;
+            }
+            grid.innerHTML = html;
+
+            grid.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const text = decodeURIComponent(this.dataset.text);
+                    copyToClipboard(text);
+                    showToast('✅ Copied Successfully');
+                    addToHistory(text);
+                    this.classList.add('copied');
+                    this.textContent = '✓ Copied!';
+                    if (navigator.vibrate) navigator.vibrate(10);
+                    setTimeout(() => {
+                        this.classList.remove('copied');
+                        this.textContent = '📋 Copy';
+                    }, 1200);
+                });
+            });
+        }
+
+        function renderGaming() {
+            const grid = document.getElementById('gamingGrid');
+            const section = document.getElementById('gamingSection');
+            const gamingStyles = allStyles.filter(s => {
+                const userCat = getUserCategory(s);
+                return userCat === 'gaming' || userCat === 'pro' || userCat === 'bgmi' || userCat === 'freefire';
+            });
+
+            if (gamingStyles.length === 0) {
+                section.classList.add('section-empty');
+                return;
+            }
+            section.classList.remove('section-empty');
+
+            const unique = deduplicateStyles(gamingStyles).slice(0, 30);
+            let html = '';
+            for (const style of unique) {
+                html += `
+                    <div class="result-card" role="listitem">
+                        <div class="preview">${style.text}</div>
+                        <div class="card-actions">
+                            <span class="style-tag">🎮 ${style.label || 'Gaming'}</span>
+                            <button class="copy-btn" data-text="${encodeURIComponent(style.text)}">📋 Copy</button>
+                        </div>
+                    </div>
+                `;
+            }
+            grid.innerHTML = html;
+            grid.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const text = decodeURIComponent(this.dataset.text);
+                    copyToClipboard(text);
+                    showToast('✅ Copied Successfully');
+                    addToHistory(text);
+                    this.classList.add('copied');
+                    this.textContent = '✓ Copied!';
+                    if (navigator.vibrate) navigator.vibrate(10);
+                    setTimeout(() => {
+                        this.classList.remove('copied');
+                        this.textContent = '📋 Copy';
+                    }, 1200);
+                });
+            });
+        }
+
+        function renderSocial() {
+            const grid = document.getElementById('socialGrid');
+            const section = document.getElementById('socialSection');
+            const socialStyles = allStyles.filter(s => {
+                const userCat = getUserCategory(s);
+                return userCat === 'social' || userCat === 'instagram' || userCat === 'tiktok' || userCat === 'discord';
+            });
+
+            if (socialStyles.length === 0) {
+                section.classList.add('section-empty');
+                return;
+            }
+            section.classList.remove('section-empty');
+
+            const unique = deduplicateStyles(socialStyles).slice(0, 30);
+            let html = '';
+            for (const style of unique) {
+                html += `
+                    <div class="result-card" role="listitem">
+                        <div class="preview">${style.text}</div>
+                        <div class="card-actions">
+                            <span class="style-tag">📱 ${style.label || 'Social'}</span>
+                            <button class="copy-btn" data-text="${encodeURIComponent(style.text)}">📋 Copy</button>
+                        </div>
+                    </div>
+                `;
+            }
+            grid.innerHTML = html;
+            grid.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const text = decodeURIComponent(this.dataset.text);
+                    copyToClipboard(text);
+                    showToast('✅ Copied Successfully');
+                    addToHistory(text);
+                    this.classList.add('copied');
+                    this.textContent = '✓ Copied!';
+                    if (navigator.vibrate) navigator.vibrate(10);
+                    setTimeout(() => {
+                        this.classList.remove('copied');
+                        this.textContent = '📋 Copy';
+                    }, 1200);
+                });
+            });
+        }
+
+        function renderDecorations() {
+            const grid = document.getElementById('decoGrid');
+            const section = document.getElementById('decoSection');
+            const decoStyles = allStyles.filter(s => s.isDecoration);
+
+            if (decoStyles.length === 0) {
+                section.classList.add('section-empty');
+                return;
+            }
+            section.classList.remove('section-empty');
+
+            const unique = deduplicateStyles(decoStyles).slice(0, 30);
+            let html = '';
+            for (const style of unique) {
+                html += `
+                    <div class="deco-item" data-text="${encodeURIComponent(style.text)}" role="listitem">
+                        ${style.text}
+                        <span class="deco-label">${style.label || 'Decoration'}</span>
+                    </div>
+                `;
+            }
+            grid.innerHTML = html;
+
+            grid.querySelectorAll('.deco-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const text = decodeURIComponent(this.dataset.text);
+                    copyToClipboard(text);
+                    showToast('✅ Copied Successfully');
+                    addToHistory(text);
+                    if (navigator.vibrate) navigator.vibrate(10);
+                });
+            });
+        }
+
+        function renderSymbols(category) {
+            symbolCategory = category || 'all';
+            symbolOffset = 0;
+            isFirstSymbolLoad = true;
+            loadSymbols();
+        }
+
+        function loadSymbols() {
+            const grid = document.getElementById('symbolsGrid');
+            const loadMoreBtn = document.getElementById('symbolsLoadMoreBtn');
+
+            let allSymbols = [];
+            if (symbolCategory === 'all') {
+                for (const [cat, arr] of Object.entries(SYMBOLS)) {
+                    allSymbols = allSymbols.concat(arr);
+                }
+            } else {
+                allSymbols = SYMBOLS[symbolCategory] || [];
+            }
+            allSymbols = [...new Set(allSymbols)];
+            currentSymbols = allSymbols;
+
+            const total = currentSymbols.length;
+            const end = Math.min(symbolOffset + SYMBOLS_PER_PAGE, total);
+            const pageSymbols = currentSymbols.slice(symbolOffset, end);
+
+            if (pageSymbols.length === 0) {
+                grid.innerHTML =
+                    `<div class="empty-state" style="padding:16px;"><p class="text-muted">No symbols in this category.</p></div>`;
+                loadMoreBtn.parentElement.style.display = 'none';
+                return;
+            }
+
+            let html = '';
+            for (const sym of pageSymbols) {
+                html += `
+                    <div class="sym-item" data-sym="${encodeURIComponent(sym)}" role="listitem">${sym}</div>
+                `;
+            }
+
+            if (isFirstSymbolLoad) {
+                grid.innerHTML = html;
+                isFirstSymbolLoad = false;
+            } else {
+                const frag = document.createDocumentFragment();
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                while (temp.firstChild) {
+                    frag.appendChild(temp.firstChild);
+                }
+                grid.appendChild(frag);
+            }
+
+            if (end < total) {
+                loadMoreBtn.parentElement.style.display = 'block';
+                loadMoreBtn.textContent = `Load More (${end}/${total})`;
+                loadMoreBtn.disabled = false;
+            } else {
+                loadMoreBtn.parentElement.style.display = 'none';
+            }
+        }
+
+        function renderFavorites() {
+            const container = document.getElementById('favoritesList');
+            const section = document.getElementById('favoritesSection');
+            if (favorites.length === 0) {
+                container.innerHTML =
+                    `<span class="text-muted text-sm">No favorites yet. Click the ★ on any style to save it.</span>`;
+                section.classList.add('section-empty');
+                return;
+            }
+            section.classList.remove('section-empty');
+            let html = '';
+            for (const fav of favorites) {
+                html += `
+                    <span class="mini-item" role="listitem">
+                        ${fav.text}
+                        <span class="remove-fav" data-id="${fav.id || fav.text}" aria-label="Remove favorite">✕</span>
+                    </span>
+                `;
+            }
+            container.innerHTML = html;
+
+            container.querySelectorAll('.remove-fav').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const id = this.dataset.id;
+                    let idx = favorites.findIndex(f => f.id == id);
+                    if (idx === -1) {
+                        const text = this.parentElement.textContent.replace('✕', '').trim();
+                        idx = favorites.findIndex(f => f.text === text);
+                    }
+                    if (idx >= 0) {
+                        favorites.splice(idx, 1);
+                        localStorage.setItem('stylishFavorites', JSON.stringify(favorites));
+                        renderFavorites();
+                        renderStyles();
+                        document.getElementById('favoriteCount').textContent = favorites.length;
+                    }
+                });
+            });
+
+            container.querySelectorAll('.mini-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const text = this.textContent.replace('✕', '').trim();
+                    if (text) {
+                        copyToClipboard(text);
+                        showToast('✅ Copied Successfully');
+                        if (navigator.vibrate) navigator.vibrate(10);
+                    }
+                });
+            });
+        }
+
+        function renderHistory() {
+            const container = document.getElementById('historyList');
+            const section = document.getElementById('historySection');
+            if (history.length === 0) {
+                container.innerHTML = `<span class="text-muted text-sm">No history yet. Generate some styles!</span>`;
+                section.classList.add('section-empty');
+                return;
+            }
+            section.classList.remove('section-empty');
+            let html = '';
+            for (const h of history.slice(0, 25)) {
+                html += `
+                    <span class="mini-item" data-text="${encodeURIComponent(h)}" role="listitem">${h}</span>
+                `;
+            }
+            if (history.length > 25) {
+                html += `<span class="text-muted text-sm">+ ${history.length - 25} more</span>`;
+            }
+            container.innerHTML = html;
+
+            container.querySelectorAll('.mini-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const text = decodeURIComponent(this.dataset.text);
+                    if (text) {
+                        copyToClipboard(text);
+                        showToast('✅ Copied Successfully');
+                        if (navigator.vibrate) navigator.vibrate(10);
+                    }
+                });
+            });
+        }
+
+        function renderCategories() {
+            const tabsContainer = document.getElementById('categoryTabs');
+            const select = document.getElementById('categoryFilter');
+
+            const userCats = new Set();
+            for (const s of allStyles) {
+                userCats.add(getUserCategory(s));
+            }
+            const available = ['all', ...Array.from(userCats).sort()];
+
+            let tabsHtml = '';
+            for (const uc of USER_CATEGORIES) {
+                if (available.includes(uc.id)) {
+                    const active = uc.id === currentCategory ? 'active' : '';
+                    tabsHtml += `<button class="tab-btn ${active}" data-cat="${uc.id}">${uc.label}</button>`;
+                }
+            }
+            tabsContainer.innerHTML = tabsHtml;
+
+            let optionsHtml = '';
+            for (const uc of USER_CATEGORIES) {
+                if (available.includes(uc.id)) {
+                    const selected = uc.id === currentCategory ? 'selected' : '';
+                    optionsHtml += `<option value="${uc.id}" ${selected}>${uc.label}</option>`;
+                }
+            }
+            select.innerHTML = optionsHtml;
+
+            tabsContainer.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('#categoryTabs .tab-btn').forEach(b => b.classList.remove(
+                    'active'));
+                    this.classList.add('active');
+                    currentCategory = this.dataset.cat;
+                    document.getElementById('categoryFilter').value = currentCategory;
+                    currentPage = 1;
+                    renderStyles();
+                });
+            });
+        }
+
+        // =====================================================================
+        //  UPDATE COUNTS
+        // =====================================================================
+        function updateCounts(count) {
+            const displayCount = (count > 0) ? count : 500;
+            document.getElementById('styleCount').textContent = (count > 0) ? count : 0;
+            document.getElementById('footerStyleCount').textContent = (count > 0) ? count : 0;
+            document.getElementById('heroBadge').textContent = (count > 0) ? '✦ ' + count + ' Styles' : '✦ 500 Styles';
+            document.getElementById('seoStyleCount').textContent = displayCount;
+            document.getElementById('seoStyleCount2').textContent = displayCount + '+';
+            document.getElementById('seoStyleCount3').textContent = displayCount + '+';
+        }
+
+        // =====================================================================
+        //  FAQ (Internal)
+        // =====================================================================
+        function renderFaq() {
+            const faqs = [
+                { q: 'What is a Stylish Text Generator?',
+                    a: 'A Stylish Text Generator converts your plain text into fancy Unicode characters, creating unique fonts for social media, gaming, and more.' },
+                { q: 'How do I create stylish text?',
+                    a: 'Simply type your text into the input box and our tool instantly generates 500+ stylish font variations using Unicode character transformations.' },
+                { q: 'How to copy fancy fonts?',
+                    a: 'Click the "Copy" button on any style card. The text is copied to your clipboard and ready to paste anywhere.' },
+                { q: 'Which fonts work in BGMI?',
+                    a: 'BGMI supports many Unicode characters. Our generator creates styles that work perfectly in BGMI names.' },
+                { q: 'Which fonts work in Free Fire?',
+                    a: 'Free Fire also supports Unicode. Our Free Fire name generator provides compatible stylish names.' },
+                { q: 'Can I use fancy text on Instagram?',
+                    a: 'Yes, Instagram fully supports Unicode characters. You can use our stylish fonts in your bio, captions, comments, and username.' },
+                { q: 'Can I use stylish names on Discord?',
+                    a: 'Yes, Discord supports Unicode. Use our Discord font generator for unique server nicknames and messages.' },
+                { q: 'Do stylish fonts affect SEO?',
+                    a: 'Stylish fonts use Unicode characters which are readable by search engines. They can enhance user engagement, indirectly benefiting SEO.' },
+                { q: 'What is Unicode text?',
+                    a: 'Unicode is a standard that assigns unique codes to characters from all writing systems. Our generator uses Unicode to create fancy fonts.' },
+                { q: 'Is this tool free?',
+                    a: 'Yes, this Stylish Text Generator is 100% free to use. No registration, no payment, no hidden charges.' },
+                { q: 'Do I need to install anything?',
+                    a: 'No installation required. Everything runs in your browser using standard web technologies.' },
+                { q: 'Can I use it on mobile?',
+                    a: 'Yes, our tool is fully mobile-optimized and works perfectly on smartphones and tablets.' },
+                { q: 'How many styles does this tool have?',
+                    a: `This tool generates ${allStyles.length}+ unique styles, with an expandable architecture for even more.` },
+                { q: 'Can I save my favorite styles?',
+                    a: 'Yes, click the ★ button on any style to save it to your favorites in local storage.' },
+                { q: 'What is an invisible character?',
+                    a: 'An invisible character (zero-width space, U+200B) is a Unicode character that takes up no visible space.' },
+                { q: 'Do these fonts work on Android and iPhone?',
+                    a: 'Yes, both Android and iOS fully support Unicode characters.' },
+                { q: 'Can I use these fonts on Discord?',
+                    a: 'Yes, Discord supports Unicode characters. Use our Discord font generator for unique nicknames.' },
+                { q: 'What are gaming symbols?',
+                    a: 'Gaming symbols include emojis and Unicode characters like 🎮, 🕹, ⚔, 🏆, and many more.' },
+                { q: 'Can I use stylish text for my YouTube channel?',
+                    a: 'Yes, YouTube supports Unicode characters in channel names, video titles, and descriptions.' },
+                { q: 'What is the decoration generator?',
+                    a: 'The decoration generator wraps your name in stylish ornaments like borders, crowns, and stars.' },
+                { q: 'Do these fonts work in WhatsApp?',
+                    a: 'Yes, WhatsApp supports Unicode characters for status, bio, and messages.' },
+                { q: 'Is there a limit to how many styles I can generate?',
+                    a: 'No, you can generate unlimited styles instantly.' },
+                { q: 'Can I copy multiple styles at once?',
+                    a: 'Each style has its own copy button. Copy one style at a time for the best experience.' },
+                { q: 'Is my data safe?',
+                    a: 'Yes, your data is completely safe. Favorites and history are stored locally in your browser.' },
+                { q: 'How do I make my name stylish for gaming?',
+                    a: 'Use our gaming name generator to add symbols, decorations, and Unicode variations to your gamer tag.' },
+                { q: 'What are the best stylish names for BGMI?',
+                    a: 'Popular choices include royal styles like ꧁༒King༒꧂, gamer tags like ★彡ProGamer彡★, and hacker styles.' },
+                { q: 'What are the best stylish names for Free Fire?',
+                    a: 'Trending Free Fire names include 🔥Blaze🔥, 💥Boom💥, ⚡Storm⚡, and aesthetic names like 🌸Sakura🌸.' },
+                { q: 'Can I use stylish text in TikTok bios?',
+                    a: 'Yes, TikTok supports Unicode. Use our TikTok font generator for stylish bios and captions.' },
+                { q: 'What are VIP stylish names?',
+                    a: 'VIP names use royal symbols like crowns, diamonds, and ornate decorations to convey prestige.' },
+                { q: 'How do I get aesthetic fonts?',
+                    a: 'Our aesthetic category offers floral, sparkle, and dainty styles perfect for Instagram and Pinterest.' },
+                { q: 'Do these fonts work in Facebook posts?',
+                    a: 'Yes, Facebook supports Unicode characters. Use our stylish text in posts, comments, and your profile.' },
+                { q: 'Can I use stylish text in Twitter/X?',
+                    a: 'Yes, Twitter/X supports Unicode. Use our generator for eye-catching tweets and display names.' },
+            ];
+
+            const grid = document.getElementById('faqGrid');
+            let html = '';
+            for (const faq of faqs) {
+                html += `
+                    <div class="faq-item">
+                        <div class="faq-q">
+                            ${faq.q}
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-a">${faq.a}</div>
+                    </div>
+                `;
+            }
+            grid.innerHTML = html;
+
+            grid.querySelectorAll('.faq-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('open');
+                });
+            });
+            if (grid.children.length) {
+                grid.children[0].classList.add('open');
+            }
+        }
+
+        // =====================================================================
+        //  ACTIONS
+        // =====================================================================
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            ta.style.top = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => toast.classList.remove('show'), 1800);
+        }
+
+        function addToHistory(text) {
+            history = history.filter(h => h !== text);
+            history.unshift(text);
+            if (history.length > 60) history = history.slice(0, 60);
+            localStorage.setItem('stylishHistory', JSON.stringify(history));
+            renderHistory();
+        }
+
+        function toggleFavorite(id) {
+            const style = allStyles.find(s => s.id === id);
+            if (!style) return;
+            const idx = favorites.findIndex(f => f.id === id);
+            if (idx >= 0) {
+                favorites.splice(idx, 1);
+            } else {
+                favorites.push({ id: style.id, text: style.text, label: style.label });
+            }
+            localStorage.setItem('stylishFavorites', JSON.stringify(favorites));
+            renderStyles();
+            renderFavorites();
+            document.getElementById('favoriteCount').textContent = favorites.length;
+        }
+
+        function generateAll(text) {
+            if (!text || text.trim() === '') {
+                allStyles = [];
+                currentPage = 1;
+                renderStyles();
+                renderGaming();
+                renderSocial();
+                renderDecorations();
+                renderFavorites();
+                renderHistory();
+                renderCategories();
+                updateCounts(0);
+                return;
+            }
+            const raw = generateStyles(text);
+            allStyles = deduplicateStyles(raw);
+            currentPage = 1;
+            renderStyles();
+            renderGaming();
+            renderSocial();
+            renderDecorations();
+            renderFavorites();
+            renderHistory();
+            renderCategories();
+            updateCounts(allStyles.length);
+            document.getElementById('invisibleDisplay').textContent = '\u200B';
+        }
+
+        // =====================================================================
+        //  EVENT DELEGATION FOR SYMBOLS
+        // =====================================================================
+        function setupSymbolsDelegation() {
+            const grid = document.getElementById('symbolsGrid');
+            grid.addEventListener('click', function(e) {
+                const item = e.target.closest('.sym-item');
+                if (item) {
+                    const sym = decodeURIComponent(item.dataset.sym);
+                    copyToClipboard(sym);
+                    showToast(`✅ Copied: ${sym}`);
+                    item.classList.add('copied');
+                    if (navigator.vibrate) navigator.vibrate(10);
+                    setTimeout(() => item.classList.remove('copied'), 600);
+                }
+            });
+        }
+
+        // =====================================================================
+        //  EVENT BINDING (BLOGGER‑SAFE)
+        // =====================================================================
+        window.addEventListener('load', function() {
+            const btn = document.getElementById('mainGenerateBtn');
+            const input = document.getElementById('mainInput');
+            if (btn && input) {
+                function runTool() { if (input.value.trim()) generateAll(input.value.trim()); }
+                btn.addEventListener('click', runTool);
+                btn.addEventListener('keydown', (e) => { if (e.key === 'Enter') runTool(); });
+            }
+        });
+        //]]>
+    </script>
+</div>
