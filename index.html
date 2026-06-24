@@ -1,13 +1,22 @@
-<div class="my-tool-bypass" id="stylish-tool">
-    <style>
-        /* ===== FORCE BUTTON CONTAINER VISIBILITY ===== */
-        #stylish-tool .hero-input-wrap {
-            display: flex !important;
-            flex-direction: row !important;
-            align-items: center !important;
-            overflow: hidden !important;
-        }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <title>Stylish Text Generator Pro – 500+ Fancy Fonts, Stylish Names & Cool Text Online</title>
+    <meta name="description" content="Convert normal text into stylish fonts instantly for Instagram, Free Fire, BGMI, WhatsApp, Discord, TikTok, Facebook and more. 500+ free fancy fonts with one-click copy." />
+    <meta name="keywords" content="stylish text generator, fancy text generator, instagram font generator, bgmi name generator, free fire stylish name, stylish font generator, discord font generator, tiktok font generator, cool text generator, fancy fonts copy paste, stylish name maker, gaming name generator, free fire name style, bgmi name style, instagram bio fonts, unicode text generator" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.easyresizerimage.in/p/stylish-text-generator.html" />
+    <meta property="og:title" content="Stylish Text Generator Pro – 500+ Fancy Fonts, Stylish Names & Cool Text Online" />
+    <meta property="og:description" content="Convert normal text into stylish fonts instantly for Instagram, Free Fire, BGMI, WhatsApp, Discord, TikTok, Facebook and more. 500+ free fancy fonts with one-click copy." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.easyresizerimage.in/p/stylish-text-generator.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Stylish Text Generator Pro – 500+ Fancy Fonts" />
+    <meta name="twitter:description" content="Generate 500+ stylish fonts for Instagram, Free Fire, BGMI, Discord & more. Free tool with one-click copy." />
 
+    <style>
         /* ===== RESET & BASE ===== */
         *,
         *::before,
@@ -49,28 +58,11 @@
             background: #8B5CF6;
         }
 
-        /* ===== MY-TOOL-BYPASS WRAPPER ===== */
-        .my-tool-bypass {
-            width: 100% !important;
-            max-width: 100% !important;
-            overflow-x: hidden !important;
-            box-sizing: border-box !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            background: #0F172A;
-            color: #F8FAFC;
-        }
-        .my-tool-bypass * {
-            box-sizing: border-box;
-        }
-
         /* ===== UTILITY ===== */
         .container {
-            width: 100% !important;
-            max-width: 100% !important;
-            margin: 0 auto !important;
-            padding: 0 8px !important;
-            box-sizing: border-box !important;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 16px;
         }
         .section {
             padding: 28px 0;
@@ -126,7 +118,7 @@
             padding: 24px 0 14px;
             text-align: center;
             position: relative;
-            overflow: visible !important;
+            overflow: hidden;
         }
         .hero::before {
             content: '';
@@ -179,86 +171,55 @@
             margin: 0 auto 16px;
             line-height: 1.6;
         }
-
-        /* === Input + Button inline === */
         .hero-input-wrap {
             max-width: 600px;
             margin: 0 auto;
-            position: relative;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .hero-input-wrap input {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px 20px;
             border-radius: 60px;
             border: 2px solid #334155;
             background: rgba(30, 41, 59, 0.8);
             backdrop-filter: blur(8px);
-            transition: border-color 0.3s, box-shadow 0.3s;
-            min-height: 54px;
-            width: 100%;
-            box-sizing: border-box;
-            overflow: visible; /* ensures button is not clipped */
+            color: #F8FAFC;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+            font-family: inherit;
         }
-        .hero-input-wrap:focus-within {
+        .hero-input-wrap input:focus {
             border-color: #06B6D4;
             box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.1);
         }
-
-        .hero-input-wrap input {
-            display: block;
-            width: 100% !important;
-            padding: 14px 100px 14px 20px !important;
-            border: none !important;
-            border-radius: 60px !important;
-            background: transparent !important;
-            color: #F8FAFC !important;
-            font-size: 1rem !important;
-            outline: none !important;
-            font-family: inherit !important;
-            box-sizing: border-box !important;
-            height: auto !important;
-            line-height: 1.4 !important;
-        }
         .hero-input-wrap input::placeholder {
-            color: #64748B !important;
+            color: #64748B;
         }
-
         .hero-input-wrap .btn-generate {
-            position: absolute;
-            right: 6px;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 8px 18px !important;
-            border-radius: 60px !important;
-            border: none !important;
-            background: linear-gradient(135deg, #06B6D4, #8B5CF6) !important;
-            color: #F8FAFC !important;
-            font-weight: 600 !important;
-            font-size: 0.8rem !important;
-            cursor: pointer !important;
-            transition: 0.3s !important;
-            white-space: nowrap !important;
-            font-family: inherit !important;
-            box-shadow: 0 4px 16px rgba(6, 182, 212, 0.2) !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            z-index: 10 !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-            pointer-events: auto !important;
-            min-width: 80px !important;
-            width: auto !important;
-            min-height: 36px !important;
-            line-height: 1.4 !important;
-            -webkit-appearance: none !important;
-            appearance: none !important;
-            text-shadow: none !important;
-            letter-spacing: 0.02em !important;
-            margin: 0 !important;
+            padding: 12px 24px;
+            border-radius: 60px;
+            border: none;
+            background: linear-gradient(135deg, #06B6D4, #8B5CF6);
+            color: #F8FAFC;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+            white-space: nowrap;
+            font-family: inherit;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.2);
         }
         .hero-input-wrap .btn-generate:hover {
-            transform: translateY(-50%) scale(1.04) !important;
-            box-shadow: 0 8px 28px rgba(6, 182, 212, 0.3) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(6, 182, 212, 0.3);
         }
         .hero-input-wrap .btn-generate:active {
-            transform: translateY(-50%) scale(0.95) !important;
+            transform: scale(0.97);
         }
 
         /* ===== STATS BAR ===== */
@@ -394,9 +355,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 10px;
-            width: 100%;
-            max-width: 100%;
-            overflow: hidden;
         }
         .result-card {
             background: rgba(30, 41, 59, 0.7);
@@ -411,9 +369,6 @@
             animation: fadeInUp 0.25s ease;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
             position: relative;
-            min-width: 0;
-            word-break: break-word;
-            overflow: hidden;
         }
         .result-card:hover {
             border-color: rgba(6, 182, 212, 0.3);
@@ -430,8 +385,6 @@
             display: flex;
             align-items: center;
             line-height: 1.4;
-            max-width: 100%;
-            overflow-wrap: break-word;
         }
         .result-card .badge-wrap {
             display: flex;
@@ -689,9 +642,6 @@
             grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
             gap: 6px;
             contain: layout style paint;
-            width: 100%;
-            max-width: 100%;
-            overflow: hidden;
         }
         .symbols-grid .sym-item {
             background: rgba(30, 41, 59, 0.6);
@@ -706,8 +656,6 @@
             user-select: none;
             will-change: transform;
             contain: layout style paint;
-            min-width: 0;
-            overflow: hidden;
         }
         .symbols-grid .sym-item:hover {
             border-color: #06B6D4;
@@ -785,9 +733,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 8px;
-            width: 100%;
-            max-width: 100%;
-            overflow: hidden;
         }
         .deco-grid .deco-item {
             background: rgba(30, 41, 59, 0.6);
@@ -801,9 +746,6 @@
             transition: 0.25s;
             color: #F8FAFC;
             font-weight: 500;
-            word-break: break-word;
-            overflow: hidden;
-            min-width: 0;
         }
         .deco-grid .deco-item:hover {
             border-color: #8B5CF6;
@@ -879,8 +821,6 @@
             border: 1px solid #334155;
             border-radius: 14px;
             padding: 20px 18px;
-            overflow: hidden;
-            word-break: break-word;
         }
         .seo-content h2 {
             font-size: 1.2rem;
@@ -939,15 +879,10 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 8px;
-            width: 100%;
-            max-width: 100%;
-            overflow: hidden;
         }
         .featured-grid .result-card {
             background: rgba(30, 41, 59, 0.8);
             border-color: rgba(6, 182, 212, 0.15);
-            min-width: 0;
-            overflow: hidden;
         }
         .featured-grid .result-card:hover {
             border-color: #06B6D4;
@@ -982,43 +917,22 @@
             .hero {
                 padding: 16px 0 10px;
             }
-            .hero-input-wrap {
-                border-radius: 50px !important;
-                min-height: 48px !important;
-            }
             .hero-input-wrap input {
-                padding: 12px 80px 12px 16px !important;
-                font-size: 0.9rem !important;
-                border-radius: 50px !important;
+                min-width: 80px;
+                padding: 10px 14px;
+                font-size: 0.85rem;
             }
             .hero-input-wrap .btn-generate {
-                padding: 6px 12px !important;
-                font-size: 0.7rem !important;
-                min-width: fit-content !important;
-                right: 4px !important;
-                min-height: 32px !important;
-                transform: translateY(-50%) !important;
+                padding: 10px 18px;
+                font-size: 0.8rem;
             }
-            .hero-input-wrap .btn-generate:hover {
-                transform: translateY(-50%) scale(1.04) !important;
-            }
-            .hero-input-wrap .btn-generate:active {
-                transform: translateY(-50%) scale(0.95) !important;
-            }
-
             .results-grid {
-                grid-template-columns: 1fr !important;
-                gap: 8px !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                overflow: hidden !important;
+                grid-template-columns: 1fr;
+                gap: 8px;
             }
             .featured-grid {
-                grid-template-columns: 1fr 1fr !important;
-                gap: 6px !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                overflow: hidden !important;
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
             }
             .stats-bar {
                 gap: 8px 14px;
@@ -1082,10 +996,9 @@
                 font-size: 0.8rem;
             }
             .container {
-                padding: 0 6px !important;
+                padding: 0 10px;
             }
         }
-
         @media (min-width: 641px) and (max-width: 1024px) {
             .results-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -1154,81 +1067,9 @@
             white-space: nowrap;
             border: 0;
         }
-
-        /* ====================================================
-           ULTRA-STRONG OVERRIDES FOR BLOGGER THEME
-           ==================================================== */
-        #stylish-tool .hero-input-wrap {
-            position: relative !important;
-            overflow: visible !important;
-            min-height: 54px !important;
-            display: flex !important;
-            flex-direction: row !important;
-            align-items: center !important;
-            width: 100% !important;
-        }
-        #stylish-tool .hero-input-wrap input {
-            display: block !important;
-            width: 100% !important;
-            padding-right: 100px !important;
-            border: none !important;
-            background: transparent !important;
-            box-sizing: border-box !important;
-        }
-        #stylish-tool .hero-input-wrap .btn-generate {
-            position: absolute !important;
-            right: 6px !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            display: inline-flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            z-index: 999 !important;
-            pointer-events: auto !important;
-            margin: 0 !important;
-            border: none !important;
-            background: linear-gradient(135deg, #06B6D4, #8B5CF6) !important;
-            color: #F8FAFC !important;
-            border-radius: 60px !important;
-            font-weight: 600 !important;
-            font-size: 0.8rem !important;
-            cursor: pointer !important;
-            box-shadow: 0 4px 16px rgba(6, 182, 212, 0.2) !important;
-            transition: 0.3s !important;
-            white-space: nowrap !important;
-            font-family: inherit !important;
-            appearance: none !important;
-            -webkit-appearance: none !important;
-            text-shadow: none !important;
-            letter-spacing: 0.02em !important;
-            line-height: 1.4 !important;
-            min-height: 36px !important;
-            padding: 8px 18px !important;
-            min-width: 80px !important;
-            width: auto !important;
-            flex: 0 0 auto !important;
-        }
-        #stylish-tool .hero-input-wrap .btn-generate:hover {
-            transform: translateY(-50%) scale(1.04) !important;
-            box-shadow: 0 8px 28px rgba(6, 182, 212, 0.3) !important;
-        }
-        #stylish-tool .hero-input-wrap .btn-generate:active {
-            transform: translateY(-50%) scale(0.95) !important;
-        }
-
-        @media (max-width: 640px) {
-            #stylish-tool .hero-input-wrap .btn-generate {
-                padding: 6px 12px !important;
-                font-size: 0.7rem !important;
-                min-width: fit-content !important;
-                right: 4px !important;
-                min-height: 32px !important;
-            }
-            #stylish-tool .hero-input-wrap input {
-                padding-right: 80px !important;
-            }
-        }
     </style>
+</head>
+<body>
 
     <!-- ===== TOAST ===== -->
     <div class="toast" id="toast" role="status" aria-live="polite">✅ Copied Successfully</div>
@@ -1241,7 +1082,7 @@
             <p class="subtitle">Convert normal text into stylish fonts instantly for Instagram, Free Fire, BGMI, WhatsApp, Discord, TikTok, Facebook and more.</p>
             <div class="hero-input-wrap">
                 <input type="text" id="mainInput" placeholder="Type your text here..." autofocus aria-label="Enter text to generate styles" />
-                <div id="mainGenerateBtn" role="button" tabindex="0" style="display: flex !important; align-items: center !important; justify-content: center !important; background: linear-gradient(135deg, #06B6D4, #8B5CF6) !important; color: white !important; padding: 12px 24px !important; border-radius: 50px !important; cursor: pointer !important; font-weight: bold !important; min-width: 100px !important; z-index: 9999 !important;">✨ Generate</div>
+                <button class="btn-generate" id="mainGenerateBtn" aria-label="Generate styles">✨ Generate</button>
             </div>
             <div class="stats-bar">
                 <div class="stat-item">
@@ -1467,85 +1308,84 @@
         </div>
     </footer>
 
-    <!-- ===== FAQ SCHEMA MARKUP ===== -->
+    <!-- ===== FAQ SCHEMA MARKUP (FIXED FOR BLOGGER) ===== -->
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-                { "@type": "Question", "name": "What is a Stylish Text Generator?", "acceptedAnswer": { "@type": "Answer", "text": "A Stylish Text Generator converts your plain text into fancy Unicode characters, creating unique fonts for social media, gaming, and more." } },
-                { "@type": "Question", "name": "How do I create stylish text?", "acceptedAnswer": { "@type": "Answer", "text": "Simply type your text into the input box and our tool instantly generates 500+ stylish font variations using Unicode character transformations." } },
-                { "@type": "Question", "name": "Can I use fancy text on Instagram?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Instagram fully supports Unicode characters. You can use our stylish fonts in your bio, captions, comments, and username." } },
-                { "@type": "Question", "name": "Can I use stylish names in BGMI?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, BGMI supports many Unicode characters. Use our BGMI name generator to create cool, unique names with special symbols." } },
-                { "@type": "Question", "name": "Can I use stylish text in Free Fire?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Free Fire supports stylish Unicode names. Generate your Free Fire nickname here and paste it directly into the game." } },
-                { "@type": "Question", "name": "Is this tool free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, this Stylish Text Generator is 100% free to use. No registration, no payment, no hidden charges." } },
-                { "@type": "Question", "name": "How to copy fancy fonts?", "acceptedAnswer": { "@type": "Answer", "text": "Click the Copy button on any style card. The text is copied to your clipboard and ready to paste anywhere." } },
-                { "@type": "Question", "name": "Which fonts work in Discord?", "acceptedAnswer": { "@type": "Answer", "text": "Discord supports Unicode, so all our styles work perfectly in Discord nicknames and messages." } },
-                { "@type": "Question", "name": "Do stylish fonts affect SEO?", "acceptedAnswer": { "@type": "Answer", "text": "They can enhance user engagement, indirectly benefiting SEO. They use standard Unicode which is readable by search engines." } },
-                { "@type": "Question", "name": "What is Unicode text?", "acceptedAnswer": { "@type": "Answer", "text": "Unicode is a standard for character encoding that enables fancy fonts across all platforms and devices." } },
-                { "@type": "Question", "name": "Can I use these fonts on WhatsApp?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, WhatsApp supports Unicode characters for status, bio, and messages." } },
-                { "@type": "Question", "name": "Can I use stylish text on TikTok?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, TikTok supports Unicode. Use our TikTok font generator for stylish bios and captions." } },
-                { "@type": "Question", "name": "How many styles does this tool have?", "acceptedAnswer": { "@type": "Answer", "text": "This tool generates 500+ unique styles, with an expandable architecture for even more." } },
-                { "@type": "Question", "name": "Can I save my favorite styles?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, click the ★ button on any style to save it to your favorites in local storage." } },
-                { "@type": "Question", "name": "What is an invisible character?", "acceptedAnswer": { "@type": "Answer", "text": "An invisible character (zero-width space, U+200B) is a Unicode character that takes up no visible space." } },
-                { "@type": "Question", "name": "Do these fonts work on Android and iPhone?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, both Android and iOS fully support Unicode characters." } },
-                { "@type": "Question", "name": "What are gaming symbols?", "acceptedAnswer": { "@type": "Answer", "text": "Gaming symbols include emojis and Unicode characters like 🎮, 🕹, ⚔, 🏆, and many more." } },
-                { "@type": "Question", "name": "Can I use stylish text for my YouTube channel?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, YouTube supports Unicode characters in channel names, video titles, and descriptions." } },
-                { "@type": "Question", "name": "What is the decoration generator?", "acceptedAnswer": { "@type": "Answer", "text": "The decoration generator wraps your name in stylish ornaments like borders, crowns, and stars." } },
-                { "@type": "Question", "name": "Is there a limit to how many styles I can generate?", "acceptedAnswer": { "@type": "Answer", "text": "No, you can generate unlimited styles instantly." } },
-                { "@type": "Question", "name": "Can I copy multiple styles at once?", "acceptedAnswer": { "@type": "Answer", "text": "Each style has its own copy button. Copy one style at a time for the best experience." } },
-                { "@type": "Question", "name": "Is my data safe?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, your data is completely safe. Favorites and history are stored locally in your browser." } }
-            ]
-        }
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"What is a Stylish Text Generator?","acceptedAnswer":{"@type":"Answer","text":"A Stylish Text Generator converts your plain text into fancy Unicode characters, creating unique fonts for social media, gaming, and more."}},
+        {"@type":"Question","name":"How do I create stylish text?","acceptedAnswer":{"@type":"Answer","text":"Simply type your text into the input box and our tool instantly generates 500+ stylish font variations using Unicode character transformations."}},
+        {"@type":"Question","name":"Can I use fancy text on Instagram?","acceptedAnswer":{"@type":"Answer","text":"Yes, Instagram fully supports Unicode characters. You can use our stylish fonts in your bio, captions, comments, and username."}},
+        {"@type":"Question","name":"Can I use stylish names in BGMI?","acceptedAnswer":{"@type":"Answer","text":"Yes, BGMI supports many Unicode characters. Use our BGMI name generator to create cool, unique names with special symbols."}},
+        {"@type":"Question","name":"Can I use stylish text in Free Fire?","acceptedAnswer":{"@type":"Answer","text":"Yes, Free Fire supports stylish Unicode names. Generate your Free Fire nickname here and paste it directly into the game."}},
+        {"@type":"Question","name":"Is this tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, this Stylish Text Generator is 100% free to use. No registration, no payment, no hidden charges."}},
+        {"@type":"Question","name":"How to copy fancy fonts?","acceptedAnswer":{"@type":"Answer","text":"Click the Copy button on any style card. The text is copied to your clipboard and ready to paste anywhere."}},
+        {"@type":"Question","name":"Which fonts work in Discord?","acceptedAnswer":{"@type":"Answer","text":"Discord supports Unicode, so all our styles work perfectly in Discord nicknames and messages."}},
+        {"@type":"Question","name":"Do stylish fonts affect SEO?","acceptedAnswer":{"@type":"Answer","text":"They can enhance user engagement, indirectly benefiting SEO. They use standard Unicode which is readable by search engines."}},
+        {"@type":"Question","name":"What is Unicode text?","acceptedAnswer":{"@type":"Answer","text":"Unicode is a standard for character encoding that enables fancy fonts across all platforms and devices."}},
+        {"@type":"Question","name":"Can I use these fonts on WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"Yes, WhatsApp supports Unicode characters for status, bio, and messages."}},
+        {"@type":"Question","name":"Can I use stylish text on TikTok?","acceptedAnswer":{"@type":"Answer","text":"Yes, TikTok supports Unicode. Use our TikTok font generator for stylish bios and captions."}},
+        {"@type":"Question","name":"How many styles does this tool have?","acceptedAnswer":{"@type":"Answer","text":"This tool generates 500+ unique styles, with an expandable architecture for even more."}},
+        {"@type":"Question","name":"Can I save my favorite styles?","acceptedAnswer":{"@type":"Answer","text":"Yes, click the ★ button on any style to save it to your favorites in local storage."}},
+        {"@type":"Question","name":"What is an invisible character?","acceptedAnswer":{"@type":"Answer","text":"An invisible character (zero-width space, U+200B) is a Unicode character that takes up no visible space."}},
+        {"@type":"Question","name":"Do these fonts work on Android and iPhone?","acceptedAnswer":{"@type":"Answer","text":"Yes, both Android and iOS fully support Unicode characters."}},
+        {"@type":"Question","name":"What are gaming symbols?","acceptedAnswer":{"@type":"Answer","text":"Gaming symbols include emojis and Unicode characters like 🎮, 🕹, ⚔, 🏆, and many more."}},
+        {"@type":"Question","name":"Can I use stylish text for my YouTube channel?","acceptedAnswer":{"@type":"Answer","text":"Yes, YouTube supports Unicode characters in channel names, video titles, and descriptions."}},
+        {"@type":"Question","name":"What is the decoration generator?","acceptedAnswer":{"@type":"Answer","text":"The decoration generator wraps your name in stylish ornaments like borders, crowns, and stars."}},
+        {"@type":"Question","name":"Is there a limit to how many styles I can generate?","acceptedAnswer":{"@type":"Answer","text":"No, you can generate unlimited styles instantly."}},
+        {"@type":"Question","name":"Can I copy multiple styles at once?","acceptedAnswer":{"@type":"Answer","text":"Each style has its own copy button. Copy one style at a time for the best experience."}},
+        {"@type":"Question","name":"Is my data safe?","acceptedAnswer":{"@type":"Answer","text":"Yes, your data is completely safe. Favorites and history are stored locally in your browser."}}
+      ]
+    }
     </script>
 
     <!-- ===== SOFTWARE APPLICATION SCHEMA ===== -->
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Stylish Text Generator Pro",
-            "description": "Generate 500+ fancy fonts, stylish names, gaming names, Instagram bio fonts & cool text online. Free, no registration.",
-            "applicationCategory": "WebApplication",
-            "operatingSystem": "All",
-            "browserRequirements": "Modern browser with JavaScript",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            },
-            "author": {
-                "@type": "Person",
-                "name": "Stylish Text Generator Pro"
-            },
-            "url": "https://www.easyresizerimage.in/p/stylish-text-generator.html"
-        }
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Stylish Text Generator Pro",
+      "description": "Generate 500+ fancy fonts, stylish names, gaming names, Instagram bio fonts & cool text online. Free, no registration.",
+      "applicationCategory": "WebApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Modern browser with JavaScript",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Stylish Text Generator Pro"
+      },
+      "url": "https://www.easyresizerimage.in/p/stylish-text-generator.html"
+    }
     </script>
 
     <!-- ===== BREADCRUMB SCHEMA ===== -->
     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://www.easyresizerimage.in/"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Stylish Text Generator Pro",
-                    "item": "https://www.easyresizerimage.in/p/stylish-text-generator.html"
-                }
-            ]
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.easyresizerimage.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Stylish Text Generator Pro",
+          "item": "https://www.easyresizerimage.in/p/stylish-text-generator.html"
         }
+      ]
+    }
     </script>
 
     <script>
-        //<![CDATA[
         // =====================================================================
         //  UNICODE MAPS (COMPLETE - 500+ STYLES)
         // =====================================================================
@@ -2467,7 +2307,7 @@
             if (totalPages > 1) {
                 let pHtml = '';
                 pHtml +=
-                    `<button class="page-btn" data-page="${currentPage - 1}" ${currentPage <= 1 ? 'disabled' : ''} aria-label="Previous page">‹</button>`;
+                `<button class="page-btn" data-page="${currentPage - 1}" ${currentPage <= 1 ? 'disabled' : ''} aria-label="Previous page">‹</button>`;
                 let startPage = Math.max(1, currentPage - 2);
                 let endPage = Math.min(totalPages, currentPage + 2);
                 if (startPage > 1) {
@@ -3072,17 +2912,131 @@
         }
 
         // =====================================================================
-        //  EVENT BINDING (BLOGGER‑SAFE)
+        //  EVENT BINDING
         // =====================================================================
-        window.addEventListener('load', function() {
-            const btn = document.getElementById('mainGenerateBtn');
-            const input = document.getElementById('mainInput');
-            if (btn && input) {
-                function runTool() { if (input.value.trim()) generateAll(input.value.trim()); }
-                btn.addEventListener('click', runTool);
-                btn.addEventListener('keydown', (e) => { if (e.key === 'Enter') runTool(); });
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainInput = document.getElementById('mainInput');
+            const mainBtn = document.getElementById('mainGenerateBtn');
+
+            function handleGenerate() {
+                const val = mainInput.value.trim();
+                if (val === '') {
+                    allStyles = [];
+                    currentPage = 1;
+                    renderStyles();
+                    renderGaming();
+                    renderSocial();
+                    renderDecorations();
+                    renderCategories();
+                    updateCounts(0);
+                    return;
+                }
+                generateAll(val);
             }
+
+            mainBtn.addEventListener('click', handleGenerate);
+
+            mainInput.addEventListener('input', function() {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    const val = this.value.trim();
+                    if (val === '') {
+                        allStyles = [];
+                        currentPage = 1;
+                        renderStyles();
+                        renderGaming();
+                        renderSocial();
+                        renderDecorations();
+                        renderCategories();
+                        updateCounts(0);
+                        return;
+                    }
+                    generateAll(val);
+                }, 300);
+            });
+
+            const catFilter = document.getElementById('categoryFilter');
+            catFilter.addEventListener('change', function() {
+                currentCategory = this.value;
+                document.querySelectorAll('#categoryTabs .tab-btn').forEach(b => {
+                    b.classList.toggle('active', b.dataset.cat === currentCategory);
+                });
+                currentPage = 1;
+                renderStyles();
+            });
+
+            const symbolTabs = document.getElementById('symbolTabs');
+            let symHtml = '';
+            const symKeys = Object.keys(SYMBOLS);
+            symHtml += `<button class="tab-btn active" data-symcat="all">All</button>`;
+            for (const key of symKeys) {
+                const label = key.charAt(0).toUpperCase() + key.slice(1);
+                symHtml += `<button class="tab-btn" data-symcat="${key}">${label}</button>`;
+            }
+            symbolTabs.innerHTML = symHtml;
+
+            symbolTabs.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    symbolTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    renderSymbols(this.dataset.symcat);
+                });
+            });
+
+            document.getElementById('symbolsLoadMoreBtn').addEventListener('click', function() {
+                symbolOffset += SYMBOLS_PER_PAGE;
+                loadSymbols();
+            });
+
+            const searchInput = document.getElementById('searchInput');
+            const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+            searchInput.addEventListener('input', function() {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    searchQuery = this.value;
+                    currentPage = 1;
+                    renderStyles();
+                }, 300);
+            });
+
+            clearSearchBtn.addEventListener('click', function() {
+                searchInput.value = '';
+                searchQuery = '';
+                currentPage = 1;
+                renderStyles();
+            });
+
+            document.getElementById('copyInvisibleBtn').addEventListener('click', function() {
+                const char = '\u200B';
+                copyToClipboard(char);
+                showToast('✅ Copied Successfully');
+                if (navigator.vibrate) navigator.vibrate(10);
+            });
+
+            setupSymbolsDelegation();
+
+            // Initial state
+            allStyles = [];
+            renderStyles();
+            renderSymbols('all');
+            renderFaq();
+            renderFavorites();
+            renderHistory();
+            renderCategories();
+            updateCounts(0);
+            document.getElementById('favoriteCount').textContent = favorites.length;
+
+            // Auto-focus on load
+            setTimeout(function() {
+                mainInput.focus();
+            }, 300);
         });
-        //]]>
+
+        // Log success
+        console.log('✅ Stylish Text Generator Pro loaded successfully for Blogger.');
+        console.log('📊 FAQ Schema is properly formatted for Google Search Console detection.');
+        console.log('📱 Mobile & Desktop responsive design optimized.');
     </script>
-</div>
+</body>
+</html>
